@@ -8,6 +8,6 @@
     "node":"^21.6.1",
     "nodemon":"^3.0.3"},
     "scripts":{
-        "start":"nodemon index.js",
+        "start":"node index.js",
     "build": "npm i"
     }}
