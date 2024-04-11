@@ -1,8 +1,6 @@
 import express from 'express';
 import mysql2 from 'mysql2';
-import path from 'path'
 import crypto from 'crypto'
-import { genSalt } from 'bcrypt';
 const route = express.Router();
 
 const connect = mysql2.createConnection({
