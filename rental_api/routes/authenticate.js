@@ -35,6 +35,8 @@ route.get("/:email/:password", (req, res) => {
     }
   })
 
+
+  connect.end()
 })
 
 

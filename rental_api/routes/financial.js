@@ -21,6 +21,7 @@ route.get("/", (req, res) => {
             res.send(result)
         }
     })
+
 })
 
 //Get All Amount for each day totalled  (**FIX THIS**)
@@ -38,6 +39,7 @@ route.get("/revenue", (req, res) => {
             res.send(revenue.toString())
         }
     })
+
 })
 
 //get IDs of vehicles with most rentals
