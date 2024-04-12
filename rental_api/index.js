@@ -2,6 +2,7 @@ import express from "express";
 import cors from 'cors';
 import bodyParser from "body-parser";
 
+
 //Imports for my routes
 import userRoute from "./routes/authenticate.js";
 import vehicleRoute from "./routes/vehicles.js";
