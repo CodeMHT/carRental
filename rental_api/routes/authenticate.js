@@ -8,14 +8,14 @@ dotenv.config()
 
 const route = express.Router();
 
-/**const connect = mysql2.createConnection({
+const connect = mysql2.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT,
   ssl: process.env.DB_SSL
-});*/
+})
 
 
 route.get("/:email/:password", (req, res) => {
@@ -39,7 +39,6 @@ route.get("/:email/:password", (req, res) => {
   })
 
 
-  connect.end()
 })
 
 
