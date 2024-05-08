@@ -1,7 +1,6 @@
 import express from 'express';
 import mysql2 from 'mysql2';
 import crypto from 'crypto'
-import { dbPool } from './database.js';
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -14,7 +13,7 @@ const connect = mysql2.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT,
-  ssl: process.env.DB_SSL
+  //ssl: process.env.DB_SSL
 })
 
 
@@ -27,15 +26,15 @@ route.get("/:email/:password", (req, res) => {
 
   var values = [req.params.email, gen_hash]
 
-  dbPool.query("SELECT * FROM sneakerdb.user where user_Email =  ?  AND user_Password = ?", values, (err, result) => {
-
-    if (result.length > 0) {
+  connect.query("SELECT * FROM sneakerdb.user where user_Email =  ?  AND user_Password = ?", values, (err, result) => {
+    /**if (result.length > 0) {
       res.send("Success")
     } else if (err) {
       res.send("Error In Server");
     } else {
       res.send("User Not Found")
-    }
+    }*/
+    res.send(result)
   })
 
 
