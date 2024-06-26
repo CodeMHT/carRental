@@ -3,6 +3,7 @@ import cors from 'cors';
 import bodyParser from "body-parser";
 import dotenv from 'dotenv';
 dotenv.config()
+import client from "./db.js";
 
 //Imports for my routes
 /**import userRoute from "./routes/authenticate.js";
@@ -13,6 +14,7 @@ import reportRoute from "./routes/reports.js";*/
 
 const app = express();
 const PORT = 5100;
+
 
 app.use(bodyParser.json());
 app.use(express.static('./images')) //in order for frontend to view the images
@@ -26,6 +28,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
+//Default Route 
+app.get("/", (req, res) => {
+    res.send("API Up and Live")
+})
 //Routes
 
 /**app.use("/user", userRoute)
@@ -36,4 +42,6 @@ app.use("/reports", reportRoute)*/
 
 //Starting the server
 app.listen(PORT, () => console.log(`Server: http://localhost:${PORT}`));
+
+
 
