@@ -27,9 +27,9 @@ const corsOptions = {
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
 //Routes
-app.use("/vehicle", vehicleRoute)
-/**app.use("/user", userRoute)
 
+/**app.use("/user", userRoute)
+app.use("/vehicle", vehicleRoute)
 app.use("/rental", rentRoute)
 app.use("/finance", financialRoute)
 app.use("/reports", reportRoute)*/
