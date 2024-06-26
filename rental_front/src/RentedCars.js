@@ -14,8 +14,8 @@ const RentedCars = () => {
                 var array = res.data
 
                 for (var i = 0; i < array.length; i++) {
-                    var vehicleDate = new Date(array[i].rented_Return)
-                    array[i].rented_Return = vehicleDate.toDateString()
+                    var vehicleDate = new Date(array[i].rented_return)
+                    array[i].rented_return = vehicleDate.toDateString()
                 }
                 setBookedVehicles(array)
             })
@@ -108,23 +108,23 @@ const RentedCars = () => {
 
                                 return <div className="col-lg-4 col-md-6 mb-2" key={index}>
                                     <div className="rent-item mb-4">
-                                        <img className="img-fluid mb-4" src={"http://localhost:5100/" + booked.vehicle_Image} alt={booked.vehicle_Name} />
-                                        <h4 className="text-uppercase mb-4">{booked.vehicle_Name}</h4>
+                                        <img className="img-fluid mb-4" src={"http://localhost:5100/" + booked.vehicle_image} alt={booked.vehicle_name} />
+                                        <h4 className="text-uppercase mb-4">{booked.vehicle_name}</h4>
                                         <div className="d-flex justify-content-center mb-4">
                                             <div className="px-2">
                                                 <i className="fa fa-car text-primary mr-1"></i>
-                                                <span>{booked.renter_Name}</span>
+                                                <span>{booked.renter_name}</span>
                                             </div>
                                             <div className="px-2 border-left border-right">
                                                 <i className="fa fa-cogs text-primary mr-1"></i>
-                                                <span>Return Date: {booked.rented_Return}</span>
+                                                <span>Return Date: {booked.rented_return}</span>
                                             </div>
                                             <div className="px-2">
                                                 <i className="fa fa-road text-primary mr-1"></i>
-                                                <span>{booked.renter_Mobile}</span>
+                                                <span>{booked.renter_mobile}</span>
                                             </div>
                                         </div>
-                                        {/**<a className="btn btn-primary px-3" href="">$99.00/Day</a>*/}
+
                                     </div>
                                 </div>
                             })}

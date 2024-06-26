@@ -135,20 +135,20 @@ const Booking = () => {
                 return (
                     <div className="container-fluid pt-5" key={index}>
                         <div className="container pt-5 pb-3">
-                            <h1 className="display-4 text-uppercase mb-5">{car.vehicle_Name}</h1>
+                            <h1 className="display-4 text-uppercase mb-5">{car.vehicle_name}</h1>
                             <div className="row align-items-center pb-2">
                                 <div className="col-lg-6 mb-4">
-                                    <img className="img-fluid" src={"http://localhost:5100/" + car.vehicle_Image} alt={car.vehicle_Name} />
+                                    <img className="img-fluid" src={"http://localhost:5100/" + car.vehicle_image} alt={car.vehicle_name} />
                                 </div>
                                 <div className="col-lg-6 mb-4">
-                                    <h4 className="mb-2">R{car.vehicle_Cost}/Day</h4>
-                                    <p>{car.vehicle_Info}</p>
+                                    <h4 className="mb-2">R{car.vehicle_cost}/Day</h4>
+                                    <p>{car.vehicle_info}</p>
                                 </div>
                             </div>
                             <div className="row mt-n3 mt-lg-0 pb-4">
                                 <div className="col-md-3 col-6 mb-2">
                                     <i className="fa fa-car text-primary mr-2"></i>
-                                    <span><strong>Model:</strong> {car.vehicle_Date}</span>
+                                    <span><strong>Model:</strong> {car.vehicle_date}</span>
                                 </div>
                             </div>
                         </div>

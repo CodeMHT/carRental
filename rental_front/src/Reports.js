@@ -17,7 +17,6 @@ const Reports = () => {
     const [names, setNames] = useState([]) //Store the names
     const [data, setData] = useState([]) //Store the data
 
-    const [vehicles, setVehicles] = useState([]) //Holds the Vehicle ID and The am,ount of times it was rented in that month
 
 
     const [error, setError] = useState("")
@@ -48,12 +47,12 @@ const Reports = () => {
         let names = []
         let times = []
         for (var i = 0; i < cars.length; i++) {
-            times.push(cars[i].TIMES)
-            axios.get(`http://localhost:5100/reports/vehicles/id/${cars[i].vehicle_ID}`)
+            times.push(cars[i].times)
+            axios.get(`http://localhost:5100/reports/vehicles/id/${cars[i].vehicle_id}`)
                 .then(res => {
 
                     let temp = res.data
-                    names.push(temp[0].vehicle_Name)
+                    names.push(temp[0].vehicle_name)
 
                 })
         }

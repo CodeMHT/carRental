@@ -1,16 +1,15 @@
 import express from "express";
 import cors from 'cors';
 import bodyParser from "body-parser";
-import dotenv from 'dotenv';
-dotenv.config()
 import client from "./db.js";
 
+
 //Imports for my routes
-/**import userRoute from "./routes/authenticate.js";
+import userRoute from "./routes/authenticate.js";
 import vehicleRoute from "./routes/vehicles.js";
 import rentRoute from "./routes/rentals.js";
 import financialRoute from "./routes/financial.js";
-import reportRoute from "./routes/reports.js";*/
+import reportRoute from "./routes/reports.js";
 
 const app = express();
 const PORT = 5100;
@@ -26,26 +25,28 @@ const corsOptions = {
     methods: '*'
 }
 
+//establish database connection 
+client.connect((err, result) => {
+    if (err) {
+        console.log("Error connecting Database: " + err)
+    }
+})
+
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
+
 //Default Route 
-app.get("/", (req, res) => {
-    client.query("Select * from vehicles", (err, result) => {
-        if (err) {
-            res.send("error getting vehicles")
-        } else {
-            res.send("Client working, vehicles empty")
-        }
-    })
-    //res.send("API Up and Live")
+app.get("/", async (req, res) => {
+
+    res.send("API Up and Live")
 })
 //Routes
 
-/**app.use("/user", userRoute)
+app.use("/user", userRoute)
 app.use("/vehicle", vehicleRoute)
 app.use("/rental", rentRoute)
 app.use("/finance", financialRoute)
-app.use("/reports", reportRoute)*/
+app.use("/reports", reportRoute)
 
 //Starting the server
 app.listen(PORT, () => console.log(`Server: http://localhost:${PORT}`));

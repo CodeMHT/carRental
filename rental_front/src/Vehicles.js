@@ -97,20 +97,20 @@ const Vehicles = () => {
 
                                 return <div className="col-lg-4 col-md-6 mb-2" key={index}>
                                     <div className="rent-item mb-4">
-                                        <img className="img-fluid mb-4" src={"http://localhost:5100/" + car.vehicle_Image} alt={car.vehicle_Name} />
-                                        <h4 className="text-uppercase mb-4">{car.vehicle_Name}</h4>
+                                        <img className="img-fluid mb-4" src={"http://localhost:5100/" + car.vehicle_image} alt={car.vehicle_name} />
+                                        <h4 className="text-uppercase mb-4">{car.vehicle_name}</h4>
                                         <div className="d-flex justify-content-center mb-4">
                                             <div className="px-2">
                                                 <i className="fa fa-car text-primary mr-1"></i>
-                                                <span>{car.vehicle_Date}</span>
+                                                <span>{car.vehicle_date}</span>
                                             </div>
                                             <div className="px-2 border-left border-right">
                                                 <i className="fa fa-cogs text-primary mr-1"></i>
-                                                <span>{car.vehicle_Trans}</span>
+                                                <span>{car.vehicle_trans}</span>
                                             </div>
                                             <div className="px-2">
                                                 <i className="fa fa-road text-primary mr-1"></i>
-                                                <span>{car.vehicle_Availability}</span>
+                                                <span>{car.vehicle_availability}</span>
                                             </div>
                                         </div>
                                     </div>

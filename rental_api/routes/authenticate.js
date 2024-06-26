@@ -1,22 +1,14 @@
 import express from 'express';
-import mysql2 from 'mysql2';
-import crypto from 'crypto'
-import dotenv from 'dotenv'
-dotenv.config()
-
+import crypto from 'crypto';
+import client from '../db.js';
 
 const route = express.Router();
 
-const connect = mysql2.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT,
-  //ssl: process.env.DB_SSL
-})
-
-
+/**client.connect((err, result) => {
+  if (err) {
+    console.log("Error connecting" + err)
+  }
+})*/
 route.get("/:email/:password", (req, res) => {
 
   //creating hash object 
@@ -26,21 +18,19 @@ route.get("/:email/:password", (req, res) => {
 
   var values = [req.params.email, gen_hash]
 
-  connect.query("SELECT * FROM sneakerdb.user where user_Email =  ?  AND user_Password = ?", values, (err, result) => {
-    /**if (result.length > 0) {
+  client.query("SELECT * FROM users where user_Email =  $1  AND user_Password = $2", values, (err, result) => {
+
+    if (err) {
+      res.send("Error In Server: " + err);
+    } else if (result.rows.length.toString() == "1") {
       res.send("Success")
-    } else if (err) {
-      res.send("Error In Server");
     } else {
       res.send("User Not Found")
-    }*/
-    res.send(result)
+    }
+
   })
 
 
 })
-
-
-
 
 export default route;

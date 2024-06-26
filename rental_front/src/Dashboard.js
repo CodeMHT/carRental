@@ -49,7 +49,7 @@ const Dashboard = () => {
                 </Modal.Header>
                 <Modal.Body >{customers.map((user, index) => {
                     return (<ul>
-                        <li key={index}>{user.renter_Name}</li>
+                        <li key={index}>{user.renter_name}</li>
                     </ul>
 
                     )
@@ -292,11 +292,11 @@ const Dashboard = () => {
                                                     {rentals.map((rental, index) => {
 
                                                         return (<tr key={index}>
-                                                            <th scope="row">{rental.rented_ID}</th>
+                                                            <th scope="row">{rental.rented_id}</th>
                                                             <td>{rental.renter_Name}</td>
-                                                            <td class="text-primary">{rental.vehicle_Name}</td>
-                                                            <td>{rental.vehicle_Date}</td>
-                                                            <td><span class="row">{rental.renter_Mobile}</span></td>
+                                                            <td class="text-primary">{rental.vehicle_name}</td>
+                                                            <td>{rental.vehicle_date}</td>
+                                                            <td><span class="row">{rental.renter_mobile}</span></td>
                                                         </tr>
                                                         )
                                                     })}
@@ -343,10 +343,10 @@ const Dashboard = () => {
                                                         <tr key={index}>
                                                             {rent.map((car, index1) => (
                                                                 <React.Fragment key={index1}>
-                                                                    <th scope="row" ><img src={"http://localhost:5100/" + car.vehicle_Image} alt="Image" /></th>
-                                                                    <td style={{ color: "blue" }}>{car.vehicle_Name}</td>
-                                                                    <td>R{car.vehicle_Cost}</td>
-                                                                    <td class="fw-bold">{car.vehicle_Date}</td>
+                                                                    <th scope="row" ><img src={"http://localhost:5100/" + car.vehicle_image} alt="Image" /></th>
+                                                                    <td style={{ color: "blue" }}>{car.vehicle_name}</td>
+                                                                    <td>R{car.vehicle_cost}</td>
+                                                                    <td class="fw-bold">{car.vehicle_date}</td>
                                                                 </React.Fragment>
                                                             ))}
                                                         </tr>
