@@ -1,8 +1,9 @@
 import express from 'express';
 import mysql2 from 'mysql2';
-import multer from 'multer'
-import path from 'path'
-import dotenv from 'dotenv'
+import multer from 'multer';
+import path from 'path';
+import dbPool from './db.js';
+import dotenv from 'dotenv';
 dotenv.config()
 
 const route = express.Router();
@@ -13,7 +14,7 @@ const connect = mysql2.createConnection({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT,
-    //ssl: process.env.DB_SSL
+
 });
 
 //storage for images
@@ -32,7 +33,7 @@ const save = multer({
 })
 
 //Add new car
-route.post('/', save.single('car_Image'), (req, res) => {
+route.post('/', save.single('car_Image'), async (req, res) => {
     var cost = 0;
 
     if (req.body.car_Type === "M") {
@@ -48,7 +49,8 @@ route.post('/', save.single('car_Image'), (req, res) => {
     }
     var car = [req.body.car_Name, req.body.car_Date, req.body.car_Info, "In Lot", req.file.filename, req.body.car_Type, req.body.car_Trans, cost];
 
-    connect.query("Insert into vehicles Set vehicle_Name = ?,vehicle_Date =  ?,vehicle_Info = ?,vehicle_Availability = ?,vehicle_Image = ?, vehicle_Type = ?,vehicle_Trans = ?,vehicle_Cost = ?", car, (err, result) => {
+
+    await dbPool.query("Insert into vehicles Set vehicle_Name = ?,vehicle_Date =  ?,vehicle_Info = ?,vehicle_Availability = ?,vehicle_Image = ?, vehicle_Type = ?,vehicle_Trans = ?,vehicle_Cost = ?", car, (err, result) => {
         if (err) {
             res.send("Failure")
         } else {
@@ -56,20 +58,22 @@ route.post('/', save.single('car_Image'), (req, res) => {
         }
 
     })
+
 })
 
 //Get specific model
-route.get('/:model', (req, res) => {
+route.get('/:model', async (req, res) => {
     var arrVehicles = []   //Array to store all vehicles that we have
     var arrRented = []   //Array to store the rented vehicles
     var arrFinal = []   //Array to be sent to the frontend
 
-    connect.query('SELECT * FROM vehicles where vehicle_Type = "' + req.params.model + '"', (err, result) => {
+
+    await dbPool.query('SELECT * FROM vehicles where vehicle_Type = "' + req.params.model + '"', (err, result) => {
         if (err) {
             res.send("Failure Getting Model")
         } else {
             arrVehicles = result
-            connect.query("SELECT vehicle_ID FROM rentedvehicles WHERE rented_Return > CURDATE();", (err1, result1) => {
+            dbPool.query("SELECT vehicle_ID FROM rentedvehicles WHERE rented_Return > CURDATE();", (err1, result1) => {
                 if (err1) {
                     res.send("Failure Getting Non Rented");
                 } else {
@@ -96,23 +100,26 @@ route.get('/:model', (req, res) => {
         }
 
     })
+
 })
 
 //Get specific car
-route.get('/car/:id', (req, res) => {
-    connect.query("Select * from vehicles where vehicle_ID = " + req.params.id, (err, result) => {
+route.get('/car/:id', async (req, res) => {
+
+    await dbPool.query("Select * from vehicles where vehicle_ID = " + req.params.id, (err, result) => {
         if (err) {
             res.send("Failure")
         } else {
             res.send(result)
         }
     })
+
 })
 
 //Get all cars
-route.get("/", (req, res) => {
+/**route.get("/", async (req, res) => {
 
-    connect.query("Select * from vehicles", (err, result) => {
+    await dbPool.query("Select * from vehicles", (err, result) => {
         if (err) {
             res.send("Loading Failure")
         } else {
@@ -120,8 +127,18 @@ route.get("/", (req, res) => {
         }
     })
 
+})*/
 
-})
+route.get("/", (req, res) => {
+    dbPool.query("SELECT * FROM vehicles", (err, result) => {
+        if (err) {
+            console.error("Loading Failure:", err);
+            res.status(500).send("Loading Failure");
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 //Get Available Cars
 route.get("/available/car", (req, res) => {
@@ -130,12 +147,13 @@ route.get("/available/car", (req, res) => {
     var arrRented = []   //Array to store the rented vehicles
     var arrFinal = []   //Array to be sent to the frontend
 
-    connect.query("SELECT * FROM vehicles ", (err, result) => {
+
+    dbPool.query("SELECT * FROM vehicles ", (err, result) => {
         if (err) {
             res.send("Failure")
         } else {
             arrVehicles = result
-            connect.query("SELECT vehicle_ID FROM rentedvehicles WHERE rented_Return > CURDATE();", (err1, result1) => {
+            dbPool.query("SELECT vehicle_ID FROM rentedvehicles WHERE rented_Return > CURDATE();", (err1, result1) => {
                 if (err1) {
                     res.send("Failure");
                 } else {
@@ -162,7 +180,10 @@ route.get("/available/car", (req, res) => {
         }
 
     })
+
+
 })
 
-export default route;
+export default route
+
 
