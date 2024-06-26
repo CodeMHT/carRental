@@ -30,7 +30,14 @@ app.use(cors(corsOptions)) // Use this after the variable declaration
 
 //Default Route 
 app.get("/", (req, res) => {
-    res.send("API Up and Live")
+    client.query("Select * from vehicles", (err, result) => {
+        if (err) {
+            res.send("error getting vehicles")
+        } else {
+            res.send("Client working, vehicles empty")
+        }
+    })
+    //res.send("API Up and Live")
 })
 //Routes
 
