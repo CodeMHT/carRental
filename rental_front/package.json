@@ -36,6 +36,7 @@
     "routes": {
       "/**": "App.js"
     }},
+    "homepage": ".",
   "eslintConfig": {
     "extends": [
       "react-app",
