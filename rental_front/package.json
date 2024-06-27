@@ -34,7 +34,7 @@
   },
   "static": {
     "routes": {
-      "/**": "Home.js"
+      "/**": "App.js"
     }},
   "eslintConfig": {
     "extends": [
