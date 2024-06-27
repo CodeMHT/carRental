@@ -25,10 +25,10 @@ route.get("/revenue", (req, res) => {
         if (err) {
             res.send("Failure")
         } else {
-            var arrMoney = result
+            var arrMoney = result.rows
 
             for (var i = 0; i < arrMoney.length; i++) {
-                revenue += parseInt(arrMoney[i].rented_Cost)
+                revenue += parseInt(arrMoney[i].rented_cost)
             }
             res.send(revenue.toString())
         }
@@ -70,7 +70,7 @@ route.post("/top/vehicles", (req, res) => {
     };
 
     // Using Promise.all to wait for all promises to resolve
-    Promise.all(array.map(item => getVehicle(item.vehicle_ID)))
+    Promise.all(array.map(item => getVehicle(item.vehicle_id)))
         .then(results => {
             // All queries have completed successfully
             res.send(results);

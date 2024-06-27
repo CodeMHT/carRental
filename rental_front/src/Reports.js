@@ -35,32 +35,30 @@ const Reports = () => {
             )
     }, [])
 
-    const GetMonthAndDate = (month) => {
-        axios.get(`http://localhost:5100/reports/${month}`)
-            .then(res => {
-                GetVehicleName(res.data)
-            }
-            )
-    }
-
-    const GetVehicleName = (cars) => {
-        let names = []
-        let times = []
-        for (var i = 0; i < cars.length; i++) {
-            times.push(cars[i].times)
-            axios.get(`http://localhost:5100/reports/vehicles/id/${cars[i].vehicle_id}`)
-                .then(res => {
-
-                    let temp = res.data
-                    names.push(temp[0].vehicle_name)
-
-                })
+    const GetMonthAndDate = async (month) => {
+        try {
+            const res = await axios.get(`http://localhost:5100/reports/${month}`);
+            GetVehicleName(res.data);
+        } catch (error) {
+            console.error("Error fetching month data:", error);
         }
-        setNames(names)
-        setData(times)
+    };
 
-    }
-
+    const GetVehicleName = async (cars) => {
+        let names = [];
+        let times = [];
+        try {
+            for (let i = 0; i < cars.length; i++) {
+                times.push(cars[i].times);
+                const res = await axios.get(`http://localhost:5100/reports/vehicles/id/${cars[i].vehicle_id}`);
+                names.push(res.data[0].vehicle_name);
+            }
+            setNames(names);
+            setData(times);
+        } catch (error) {
+            console.error("Error fetching vehicle names:", error);
+        }
+    };
     const tempdata = {
         labels: names,
         datasets: [{
@@ -68,21 +66,21 @@ const Reports = () => {
             data: data,
             backgroundColor: [
                 'rgba(82, 78, 183)',
-
             ],
             borderColor: [
                 'rgb(82, 78, 183)',
-
             ],
             borderWidth: 1
         }]
-    }
+    };
 
     const options = {
         maintainAspectRatio: false,
-        legend: {
-            labels: {
-                fontSize: 30
+        plugins: {
+            legend: {
+                labels: {
+                    fontSize: 30
+                }
             }
         },
         scales: {

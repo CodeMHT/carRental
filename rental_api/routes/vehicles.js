@@ -55,12 +55,12 @@ route.post('/', save.single('car_Image'), async (req, res) => {
 })
 
 //Get specific model
-route.get('/:model', async (req, res) => {
+route.get('/:model', (req, res) => {
     var arrVehicles = []   //Array to store all vehicles that we have
     var arrFinal = []   //Array to be sent to the frontend
 
 
-    client.query('SELECT * FROM vehicles where vehicle_Type = "' + req.params.model + '"', (err, result) => {
+    client.query(`SELECT * FROM vehicles where vehicle_Type ='` + req.params.model + `'`, (err, result) => {
         if (err) {
             res.send("Failure Getting Model")
         } else {
@@ -75,7 +75,7 @@ route.get('/:model', async (req, res) => {
                         let isRented = false;
 
                         for (let j = 0; j < arrRented.length; j++) {
-                            if (arrVehicles[i].vehicle_ID === arrRented[j].vehicle_ID) {
+                            if (arrVehicles[i].vehicle_id === arrRented[j].vehicle_id) {
                                 isRented = true;
                                 break;  // Exit the loop once a match is found
                             }
@@ -145,7 +145,7 @@ route.get("/available/car", (req, res) => {
                         let isRented = false;
 
                         for (let j = 0; j < arrRented.length; j++) {
-                            if (arrVehicles[i].vehicle_ID === arrRented[j].vehicle_ID) {
+                            if (arrVehicles[i].vehicle_id === arrRented[j].vehicle_id) {
                                 isRented = true;
                                 break;  // Exit the loop once a match is found
                             }

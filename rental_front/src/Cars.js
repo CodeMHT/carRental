@@ -13,6 +13,7 @@ const Cars = () => {
     useEffect(() => {
         axios.get("http://localhost:5100/vehicle/available/car")
             .then(res => setCars(res.data))
+
     }, [])
 
     const GetModel = (model) => {
@@ -23,7 +24,10 @@ const Cars = () => {
 
 
             axios.get(`http://localhost:5100/vehicle/${model}`)
-                .then(res => setCars(res.data))
+                .then(res => {
+
+                    setCars(res.data)
+                })
         }
     }
 
@@ -122,11 +126,11 @@ const Cars = () => {
                                     <div className="d-flex justify-content-center mb-4">
                                         <div className="px-2">
                                             <i className="fa fa-car text-primary mr-1"></i>
-                                            <span>{car.vehicle_Date}</span>
+                                            <span>{car.vehicle_date}</span>
                                         </div>
                                         <div className="px-2 border-left">
                                             <i className="fa fa-cogs text-primary mr-1"></i>
-                                            <span>{car.vehicle_Trans}</span>
+                                            <span>{car.vehicle_trans}</span>
                                         </div>
 
                                     </div>
@@ -156,7 +160,7 @@ const Cars = () => {
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Usefull Links</h4>
+                        <h4 class="text-uppercase text-light mb-4">Useful Links</h4>
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Private Policy</a>
                             <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Term & Conditions</a>

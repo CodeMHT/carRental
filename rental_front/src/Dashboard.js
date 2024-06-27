@@ -9,6 +9,7 @@ const Dashboard = () => {
     const [rentals, setRentals] = useState([])  //Store todays Rentals
     const [customers, setCustomers] = useState([])  //Get Names of customers for the current year
     const [topRentals, setTopRentals] = useState([]) //Store vehicles with most bookings
+    const [month, setMonth] = useState("")  //Store the amount of rentals this month
 
     const [open, setOpen] = useState(false)  //Controls the modal
 
@@ -32,6 +33,8 @@ const Dashboard = () => {
         axios.get("http://localhost:5100/rental/customers")
             .then(res => setCustomers(res.data))
 
+        axios.get("http://localhost:5100/rental/rented/monthly")
+            .then(res => setMonth(res.data))
 
     }, [])
 
@@ -162,16 +165,14 @@ const Dashboard = () => {
                                         </div>
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Sales <span>| This month</span></h5>
+                                            <h5 class="card-title">Rentals <span>| This month</span></h5>
 
                                             <div class="d-flex align-items-center">
                                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="bi bi-cart"></i>
                                                 </div>
                                                 <div class="ps-3">
-                                                    <h6>145</h6>
-                                                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+                                                    <h6> {month}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -293,7 +294,7 @@ const Dashboard = () => {
 
                                                         return (<tr key={index}>
                                                             <th scope="row">{rental.rented_id}</th>
-                                                            <td>{rental.renter_Name}</td>
+                                                            <td>{rental.renter_name}</td>
                                                             <td class="text-primary">{rental.vehicle_name}</td>
                                                             <td>{rental.vehicle_date}</td>
                                                             <td><span class="row">{rental.renter_mobile}</span></td>

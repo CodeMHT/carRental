@@ -35,7 +35,7 @@ const Booking = () => {
 
         //get the days between dates
         var days = (dropoff.getTime() - pickup.getTime()) / (1000 * 60 * 60 * 24)
-        details.rented_Cost = days * car[0].vehicle_Cost
+        details.rented_Cost = days * car[0].vehicle_cost
 
         if (details.renter_ID.length === 13 && details.renter_Mobile.length === 10) {
 

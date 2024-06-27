@@ -8,9 +8,9 @@ route.post("/", (req, res) => {
 
     var rental = [req.body.rented_PickUp, req.body.rented_Return, req.body.vehicle_ID, req.body.renter_Name, req.body.renter_ID, req.body.renter_Email, req.body.renter_Mobile, req.body.rented_Cost]
 
-    client.query("INSERT INTO rentedvehicles (rented_PickUp, rented_Return, vehicle_ID, renter_Name, renter_ID, renter_Email, renter_Mobile, rented_Cost) VALUES ($1, $2, $3, $4, $5, $6, $7, $8", rental, (err, result) => {
+    client.query("INSERT INTO rentedvehicles (rented_PickUp, rented_Return, vehicle_ID, renter_Name, renter_ID, renter_Email, renter_Mobile, rented_Cost) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", rental, (err, result) => {
         if (err) {
-            console.log(err)
+
             res.send("Failure")
 
         } else {
@@ -32,6 +32,17 @@ route.get("/customers", (req, res) => {
     })
 })
 
+//Get The number of rentals in the current month
+route.get("/rented/monthly", (req, res) => {
+    client.query("select rented_pickup from rentedvehicles where EXTRACT(MONTH FROM rented_pickup) = EXTRACT(MONTH FROM CURRENT_DATE)", (err, result) => {
+        if (err) {
+            res.send("Error monthly rentals")
+        } else {
+            res.send(result.rows.length.toString())
+        }
+    })
+})
+
 
 //Get info about booked Vehicles and person
 route.get("/", (req, res) => {
@@ -47,7 +58,7 @@ route.get("/", (req, res) => {
 
             //get only the Cars that are stil booked 
             for (var i = 0; i < prevarray.length; i++) {
-                var vehicleDate = new Date(prevarray[i].rented_Return)
+                var vehicleDate = new Date(prevarray[i].rented_return)
 
                 if (currentdate < vehicleDate) {
                     prevarray[i].rented_return = vehicleDate.toDateString()

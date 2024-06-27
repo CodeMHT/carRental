@@ -4,11 +4,7 @@ import client from '../db.js';
 
 const route = express.Router();
 
-/**client.connect((err, result) => {
-  if (err) {
-    console.log("Error connecting" + err)
-  }
-})*/
+
 route.get("/:email/:password", (req, res) => {
 
   //creating hash object 
