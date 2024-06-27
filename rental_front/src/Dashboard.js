@@ -344,7 +344,7 @@ const Dashboard = () => {
                                                         <tr key={index}>
                                                             {rent.map((car, index1) => (
                                                                 <React.Fragment key={index1}>
-                                                                    <th scope="row" ><img src={"https://carrental-service-l4ls.onrender.com/" + car.vehicle_image} alt="Image" /></th>
+                                                                    <th scope="row" ><img src={"https://carrental-service-l4ls.onrender.com/" + car.vehicle_image} alt={car.vehicle_name} /></th>
                                                                     <td style={{ color: "blue" }}>{car.vehicle_name}</td>
                                                                     <td>R{car.vehicle_cost}</td>
                                                                     <td class="fw-bold">{car.vehicle_date}</td>
