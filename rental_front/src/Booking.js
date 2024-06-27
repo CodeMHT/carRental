@@ -22,7 +22,7 @@ const Booking = () => {
     })
 
     useEffect(() => {
-        axios.get(`http://localhost:5100/vehicle/car/${params.id}`)
+        axios.get(`https://carrental-service-l4ls.onrender.com/vehicle/car/${params.id}`)
             .then(res => setCar(res.data))
     }, [])
 
@@ -39,7 +39,7 @@ const Booking = () => {
 
         if (details.renter_ID.length === 13 && details.renter_Mobile.length === 10) {
 
-            axios.post("http://localhost:5100/rental", details)
+            axios.post("https://carrental-service-l4ls.onrender.com/rental", details)
                 .then(res => {
                     if (res.data === "Success") {
                         alert("Success. You'll receive an email with details of your order")
@@ -138,7 +138,7 @@ const Booking = () => {
                             <h1 className="display-4 text-uppercase mb-5">{car.vehicle_name}</h1>
                             <div className="row align-items-center pb-2">
                                 <div className="col-lg-6 mb-4">
-                                    <img className="img-fluid" src={"http://localhost:5100/" + car.vehicle_image} alt={car.vehicle_name} />
+                                    <img className="img-fluid" src={"https://carrental-service-l4ls.onrender.com/" + car.vehicle_image} alt={car.vehicle_name} />
                                 </div>
                                 <div className="col-lg-6 mb-4">
                                     <h4 className="mb-2">R{car.vehicle_cost}/Day</h4>
@@ -283,19 +283,7 @@ const Booking = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Newsletter</h4>
-                        <p class="mb-4">Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
-                        <div class="w-100 mb-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-dark border-dark" style={{ padding: 25 }} placeholder="Your Email" />
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary text-uppercase px-3">Sign Up</button>
-                                </div>
-                            </div>
-                        </div>
-                        <i>Lorem sit sed elitr sed kasd et</i>
-                    </div>
+
                 </div>
             </div>
             <div class="container-fluid bg-dark py-4 px-sm-3 px-md-5">

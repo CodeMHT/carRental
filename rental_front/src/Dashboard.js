@@ -18,29 +18,29 @@ const Dashboard = () => {
 
     useEffect(() => {
         //Get revenue for the month
-        axios.get(`http://localhost:5100/finance/revenue`)
+        axios.get(`https://carrental-service-l4ls.onrender.com/finance/revenue`)
             .then(res => setRevenue(res.data))
 
         //Get Todays Rentals
-        axios.get("http://localhost:5100/finance")
+        axios.get("https://carrental-service-l4ls.onrender.com/finance")
             .then(res => setRentals(res.data))
 
         //getIDs of top Rentals
-        axios.get("http://localhost:5100/finance/top/rented")
+        axios.get("https://carrental-service-l4ls.onrender.com/finance/top/rented")
             .then(res => GetRental(res.data))
 
         //Get The Names of customers
-        axios.get("http://localhost:5100/rental/customers")
+        axios.get("https://carrental-service-l4ls.onrender.com/rental/customers")
             .then(res => setCustomers(res.data))
 
-        axios.get("http://localhost:5100/rental/rented/monthly")
+        axios.get("https://carrental-service-l4ls.onrender.com/rental/rented/monthly")
             .then(res => setMonth(res.data))
 
     }, [])
 
     var GetRental = (array) => {  //used to get top Rented vehicles using the id obtained 
 
-        axios.post("http://localhost:5100/finance/top/vehicles", array)
+        axios.post("https://carrental-service-l4ls.onrender.com/finance/top/vehicles", array)
             .then(res => setTopRentals(res.data))
     }
 
@@ -344,7 +344,7 @@ const Dashboard = () => {
                                                         <tr key={index}>
                                                             {rent.map((car, index1) => (
                                                                 <React.Fragment key={index1}>
-                                                                    <th scope="row" ><img src={"http://localhost:5100/" + car.vehicle_image} alt="Image" /></th>
+                                                                    <th scope="row" ><img src={"https://carrental-service-l4ls.onrender.com/" + car.vehicle_image} alt="Image" /></th>
                                                                     <td style={{ color: "blue" }}>{car.vehicle_name}</td>
                                                                     <td>R{car.vehicle_cost}</td>
                                                                     <td class="fw-bold">{car.vehicle_date}</td>

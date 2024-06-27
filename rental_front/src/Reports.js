@@ -22,7 +22,7 @@ const Reports = () => {
     const [error, setError] = useState("")
 
     useEffect(() => {
-        axios.get(`http://localhost:5100/reports/${"A"}`)
+        axios.get(`https://carrental-service-l4ls.onrender.com/reports/${"A"}`)
             .then(res => {
                 if (res.data === "Failure Doughnut") {
                     setError("Error fetching Data")
@@ -37,7 +37,7 @@ const Reports = () => {
 
     const GetMonthAndDate = async (month) => {
         try {
-            const res = await axios.get(`http://localhost:5100/reports/${month}`);
+            const res = await axios.get(`https://carrental-service-l4ls.onrender.com/reports/${month}`);
             GetVehicleName(res.data);
         } catch (error) {
             console.error("Error fetching month data:", error);
@@ -50,7 +50,7 @@ const Reports = () => {
         try {
             for (let i = 0; i < cars.length; i++) {
                 times.push(cars[i].times);
-                const res = await axios.get(`http://localhost:5100/reports/vehicles/id/${cars[i].vehicle_id}`);
+                const res = await axios.get(`https://carrental-service-l4ls.onrender.com/reports/vehicles/id/${cars[i].vehicle_id}`);
                 names.push(res.data[0].vehicle_name);
             }
             setNames(names);

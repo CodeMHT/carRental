@@ -9,7 +9,7 @@ const RentedCars = () => {
     //get all the cars that have been rented out
     useEffect(() => {
 
-        axios.get("http://localhost:5100/rental")
+        axios.get("https://carrental-service-l4ls.onrender.com/rental")
             .then(res => {
                 var array = res.data
 
@@ -108,7 +108,7 @@ const RentedCars = () => {
 
                                 return <div className="col-lg-4 col-md-6 mb-2" key={index}>
                                     <div className="rent-item mb-4">
-                                        <img className="img-fluid mb-4" src={"http://localhost:5100/" + booked.vehicle_image} alt={booked.vehicle_name} />
+                                        <img className="img-fluid mb-4" src={"https://carrental-service-l4ls.onrender.com/" + booked.vehicle_image} alt={booked.vehicle_name} />
                                         <h4 className="text-uppercase mb-4">{booked.vehicle_name}</h4>
                                         <div className="d-flex justify-content-center mb-4">
                                             <div className="px-2">

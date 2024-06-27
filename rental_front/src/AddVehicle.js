@@ -25,7 +25,7 @@ const AddVehicle = () => {
         data.append("car_Type", car.car_Type)
         data.append("car_Trans", car.car_Trans)
 
-        axios.post("http://localhost:5100/vehicle", data)
+        axios.post("https://carrental-service-l4ls.onrender.com/vehicle", data)
             .then(res => {
 
                 if (res.data === "Success") {

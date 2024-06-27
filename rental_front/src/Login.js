@@ -12,7 +12,7 @@ const Login = () => {
 
     const Submit = (event) => {
         event.preventDefault()
-        axios.get(`http://localhost:5100/user/${user.email}/${user.password}`)
+        axios.get(`https://carrental-service-l4ls.onrender.com/user/${user.email}/${user.password}`)
             .then(res => {
                 console.log(res.data)
                 if (res.data === "Success") {

@@ -11,19 +11,19 @@ const Cars = () => {
     const [cars, setCars] = useState([]) //Store Vehicles
 
     useEffect(() => {
-        axios.get("http://localhost:5100/vehicle/available/car")
+        axios.get("https://carrental-service-l4ls.onrender.com/vehicle/available/car")
             .then(res => setCars(res.data))
 
     }, [])
 
     const GetModel = (model) => {
         if (model === "A") {
-            axios.get("http://localhost:5100/vehicle/available/car")
+            axios.get("https://carrental-service-l4ls.onrender.com/vehicle/available/car")
                 .then(res => setCars(res.data))
         } else {
 
 
-            axios.get(`http://localhost:5100/vehicle/${model}`)
+            axios.get(`https://carrental-service-l4ls.onrender.com/vehicle/${model}`)
                 .then(res => {
 
                     setCars(res.data)
@@ -121,7 +121,7 @@ const Cars = () => {
 
                             return (<div className="col-lg-4 col-md-6 mb-2" key={index}>
                                 <div className="rent-item mb-4">
-                                    <img className="img-fluid mb-4" src={"http://localhost:5100/" + car.vehicle_image} alt={car.vehicle_name} />
+                                    <img className="img-fluid mb-4" src={"https://carrental-service-l4ls.onrender.com/" + car.vehicle_image} alt={car.vehicle_name} />
                                     <h4 className="text-uppercase mb-4">{car.vehicle_name}</h4>
                                     <div className="d-flex justify-content-center mb-4">
                                         <div className="px-2">
@@ -193,19 +193,7 @@ const Cars = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Newsletter</h4>
-                        <p class="mb-4">Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
-                        <div class="w-100 mb-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-dark border-dark" style={{ padding: 25 }} placeholder="Your Email" />
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary text-uppercase px-3">Sign Up</button>
-                                </div>
-                            </div>
-                        </div>
-                        <i>Lorem sit sed elitr sed kasd et</i>
-                    </div>
+
                 </div>
             </div>
             <div class="container-fluid bg-dark py-4 px-sm-3 px-md-5">
