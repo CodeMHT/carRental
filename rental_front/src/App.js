@@ -21,7 +21,7 @@ import Reports from "./Reports";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path="/" element={<Home />} />
