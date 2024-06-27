@@ -33,28 +33,9 @@ const Login = () => {
                     <div class="row">
                         <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                             <div className="d-inline-flex align-items-center">
-                                <a className="text-body pr-3" href=""><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</a>
+                                <a className="text-body pr-3" ><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</a>
                                 <span className="text-body">|</span>
-                                <a className="text-body px-3" href=""><i className="mr-2"><FontAwesomeIcon icon="fa fa-envelope" /></i>gwalamhlaba@icloud.com</a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 text-center text-lg-right">
-                            <div class="d-inline-flex align-items-center">
-                                <a class="text-body px-3" href="">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="text-body px-3" href="">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a class="text-body px-3" href="">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a class="text-body px-3" href="">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a class="text-body pl-3" href="">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
+                                <a className="text-body px-3" ><i className="mr-2"><FontAwesomeIcon icon="fa fa-envelope" /></i>gwalamhlaba@icloud.com</a>
                             </div>
                         </div>
                     </div>
@@ -62,7 +43,7 @@ const Login = () => {
                 <div class="container-fluid position-relative nav-bar p-0">
                     <div class="position-relative px-lg-5" style={{ zIndex: 9 }}>
                         <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
-                            <a href="" class="navbar-brand">
+                            <a class="navbar-brand">
                                 <h1 class="text-uppercase text-primary mb-1">XDrive Rentals</h1>
                             </a>
                             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">

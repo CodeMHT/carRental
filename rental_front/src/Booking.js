@@ -24,7 +24,7 @@ const Booking = () => {
     useEffect(() => {
         axios.get(`https://carrental-service-l4ls.onrender.com/vehicle/car/${params.id}`)
             .then(res => setCar(res.data))
-    }, [])
+    }, [params.id])
 
 
     //Sending information to api
@@ -67,30 +67,13 @@ const Booking = () => {
                 <div className="row">
                     <div className="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                         <div className="d-inline-flex align-items-center">
-                            <a className="text-body pr-3" href=""><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</a>
+                            <a className="text-body pr-3"><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</a>
                             <span className="text-body">|</span>
-                            <a className="text-body px-3" href=""><i className="mr-2"><FontAwesomeIcon icon="fa fa-envelope" /></i>gwalamhlaba@icloud.com</a>
+                            <a className="text-body px-3"><i className="mr-2"><FontAwesomeIcon icon="fa fa-envelope" /></i>gwalamhlaba@icloud.com</a>
                         </div>
                     </div>
-                    <div className="col-md-6 text-center text-lg-right">
-                        <div className="d-inline-flex align-items-center">
-                            <a className="text-body px-3" href="">
-                                <i className="fab fa-facebook-f"></i>
-                            </a>
-                            <a className="text-body px-3" href="">
-                                <i className="fab fa-twitter"></i>
-                            </a>
-                            <a className="text-body px-3" href="">
-                                <i className="fab fa-linkedin-in"></i>
-                            </a>
-                            <a className="text-body px-3" href="">
-                                <i className="fab fa-instagram"></i>
-                            </a>
-                            <a className="text-body pl-3" href="">
-                                <i className="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
             {/**Topbar End */}
@@ -100,7 +83,7 @@ const Booking = () => {
             <div className="container-fluid position-relative nav-bar p-0">
                 <div className="position-relative px-lg-5" style={{ zIndex: 9 }}>
                     <nav className="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
-                        <a href="" className="navbar-brand">
+                        <a className="navbar-brand">
                             <h1 className="text-uppercase text-primary mb-1">XDrive Rentals</h1>
                         </a>
                         <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -238,67 +221,58 @@ const Booking = () => {
                 <div class="row pt-5">
                     <div class="col-lg-3 col-md-6 mb-5">
                         <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt text-white mr-3"></i>123 Street, New York, USA</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt text-white mr-3"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope text-white mr-3"></i>info@example.com</p>
-                        <h6 class="text-uppercase text-white py-2">Follow Us</h6>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt text-white mr-3"></i>Gauteng</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt text-white mr-3"></i>084 279 3374</p>
+                        <p><i class="fa fa-envelope text-white mr-3"></i>gwalamhlaba@icloud.com</p>
+                        <h6 class="text-uppercase text-white py-2">My other platforms</h6>
                         <div class="d-flex justify-content-start">
-                            <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-lg btn-dark btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="https://www.linkedin.com/in/mhlabunzima-gwala-a56b30274/"><FontAwesomeIcon icon="fab fa-linkedin-in" /></a>
+                            <a class="btn btn-lg btn-dark btn-lg-square" href="https://www.instagram.com/chillycheesecalii/"><FontAwesomeIcon icon="fab fa-instagram" /></a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Usefull Links</h4>
+                        <h4 class="text-uppercase text-light mb-4">Useful Links</h4>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Private Policy</a>
-                            <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Term & Conditions</a>
-                            <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>New Member Registration</a>
-                            <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Affiliate Programme</a>
-                            <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Return & Refund</a>
-                            <a class="text-body" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Help & FQAs</a>
+                            <a class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>Private Policy</a>
+                            <a class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>Term & Conditions</a>
+                            <a class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>New Member Registration</a>
+                            <a class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>Affiliate Programme</a>
+                            <a class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>Return & Refund</a>
+                            <a class="text-body" ><i class="fa fa-angle-right text-white mr-2"></i>Help & FQAs</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-5">
                         <h4 class="text-uppercase text-light mb-4">Car Gallery</h4>
                         <div class="row mx-n1">
                             <div class="col-4 px-1 mb-2">
-                                <a href=""><img class="w-100" src="https://img-ik.cars.co.za/news-site-za/images/2023/04/BMW-M2-2023-28.jpg?tr=w-1200,h-800" alt="" /></a>
+                                <a ><img class="w-100" src="https://img-ik.cars.co.za/news-site-za/images/2023/04/BMW-M2-2023-28.jpg?tr=w-1200,h-800" alt="" /></a>
                             </div>
                             <div class="col-4 px-1 mb-2">
-                                <a href=""><img class="w-100" src="https://carsite.co.za/wp-content/uploads/2012/12/BMW-M6-Gran-Coupe-Rear1.jpg" alt="" /></a>
+                                <a ><img class="w-100" src="https://carsite.co.za/wp-content/uploads/2012/12/BMW-M6-Gran-Coupe-Rear1.jpg" alt="" /></a>
                             </div>
                             <div class="col-4 px-1 mb-2">
-                                <a href=""><img class="w-100" src="https://media.evo.co.uk/image/private/s--NV8ZTho0--/v1556218410/evo/2017/10/super-test_033.jpg" alt="" /></a>
+                                <a ><img class="w-100" src="https://media.evo.co.uk/image/private/s--NV8ZTho0--/v1556218410/evo/2017/10/super-test_033.jpg" alt="" /></a>
                             </div>
                             <div class="col-4 px-1 mb-2">
-                                <a href=""><img class="w-100" src="https://www.bmw.co.za/content/dam/bmw/common/all-models/m-series/x5m/2023/highlights/bmw-m-series-x5-m-gallery-image-impressionen-02_1920.jpg.asset.1673025861930.jpg" alt="" /></a>
+                                <a ><img class="w-100" src="https://www.bmw.co.za/content/dam/bmw/common/all-models/m-series/x5m/2023/highlights/bmw-m-series-x5-m-gallery-image-impressionen-02_1920.jpg.asset.1673025861930.jpg" alt="" /></a>
                             </div>
                             <div class="col-4 px-1 mb-2">
-                                <a href=""><img class="w-100" src="https://www.bmwusa.com/content/dam/bmw/common/vehicles/2023/my24/m-models/x6-m/overview/mobile/BMW-MY24-X6M-Overview-Form-01-Mobile.jpg" alt="" /></a>
+                                <a ><img class="w-100" src="https://www.bmwusa.com/content/dam/bmw/common/vehicles/2023/my24/m-models/x6-m/overview/mobile/BMW-MY24-X6M-Overview-Form-01-Mobile.jpg" alt="" /></a>
                             </div>
                             <div class="col-4 px-1 mb-2">
-                                <a href=""><img class="w-100" src="https://www.carmag.co.za/wp-content/uploads/2023/12/BMW-Z4-prototype-front-three-quarter-copy-jpg.webp" alt="" /></a>
+                                <a ><img class="w-100" src="https://www.carmag.co.za/wp-content/uploads/2023/12/BMW-Z4-prototype-front-three-quarter-copy-jpg.webp" alt="" /></a>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="container-fluid bg-dark py-4 px-sm-3 px-md-5">
-                <p class="mb-2 text-center text-body">&copy; <a href="#">XDrive Rentals</a>. All Rights Reserved.</p>
+                <p class="mb-2 text-center text-body">&copy; <a >XDrive Rentals</a>. All Rights Reserved.</p>
 
                 {/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/}
-                <p class="m-0 text-center text-body">Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
+                <p class="m-0 text-center text-body">CSS Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
             </div>
             {/* Footer End */}
-
-
-            {/* Back to Top */}
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
         </>
 
     )
