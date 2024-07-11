@@ -71,7 +71,7 @@ const Home = () => {
                                     <div class="navbar-nav ml-auto py-0">
                                         <a href="/" class="nav-item nav-link active">Home</a>
 
-                                        <a href="/cars" class="nav-item nav-link" >Cars</a>
+                                        <a href="/allcars" class="nav-item nav-link" >Cars</a>
 
                                         <a href="/contact" class="nav-item nav-link">Contact</a>
                                         <a href="/login" class='nav-link '>Login</a>

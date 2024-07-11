@@ -70,7 +70,7 @@ const Contact = () => {
                             <div className="navbar-nav ml-auto py-0">
                                 <a href="/" className="nav-item nav-link active">Home</a>
 
-                                <a href="/cars" className="nav-item nav-link" >Cars</a>
+                                <a href="/allcars" className="nav-item nav-link" >Cars</a>
                                 <a href="/contact" className="nav-item nav-link">Contact</a>
                                 <a href="/login" className='nav-link '>Login</a>
                             </div>
