@@ -8,10 +8,6 @@ For admin side of site
 email: gwala@gmail.com
 password: XDrive2024rentals
 
-## Reports
-
-Reports may be slightly glitchy
-will be fixed in due time
 
 ## Vehicles
 
