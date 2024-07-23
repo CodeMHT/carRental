@@ -56,7 +56,7 @@ const Booking = () => {
                     if (res.data === "Success") {
                         setMessage("Success. You'll receive an email with details of your order, Redirect in 3 seconds")
                         setInterval(() => {
-                            redirect("/allcars")
+                            redirect("/allvehicles")
                         }, [3000])
 
                     } else {
@@ -105,7 +105,7 @@ const Booking = () => {
                         <div className="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                             <div className="navbar-nav ml-auto py-0">
                                 <a href="/" className="nav-item nav-link active">Home</a>
-                                <a href="/allcars" className="nav-item nav-link">Cars</a>
+                                <a href="/allvehicles" className="nav-item nav-link">Cars</a>
                                 <a href="/contact" className="nav-item nav-link">Contact</a>
                                 <a href="/login" className='nav-link '>Login</a>
                             </div>

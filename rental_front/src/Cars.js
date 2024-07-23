@@ -35,7 +35,7 @@ const Cars = () => {
 
     //Avoiding using URL parameters as the cause issues upon deployment
     const SendID = (ID) => {
-        redirect("/booking", { state: ID })
+        redirect("/bookings", { state: ID })
     }
 
     return (
@@ -70,7 +70,7 @@ const Cars = () => {
                         <div className="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                             <div className="navbar-nav ml-auto py-0">
                                 <a href="/" className="nav-item nav-link active">Home</a>
-                                <a href="/allcars" className="nav-item nav-link">Cars</a>
+                                <a href="/allvehicles" className="nav-item nav-link">Cars</a>
                                 <a href="/contact" className="nav-item nav-link">Contact</a>
                                 <a href="/login" className='nav-link '>Login</a>
                             </div>

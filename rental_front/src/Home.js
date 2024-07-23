@@ -71,7 +71,7 @@ const Home = () => {
                                     <div class="navbar-nav ml-auto py-0">
                                         <a href="/" class="nav-item nav-link active">Home</a>
 
-                                        <a href="/allcars" class="nav-item nav-link" >Cars</a>
+                                        <a href="/allvehicles" class="nav-item nav-link" >Cars</a>
 
                                         <a href="/contact" class="nav-item nav-link">Contact</a>
                                         <a href="/login" class='nav-link '>Login</a>
@@ -92,7 +92,7 @@ const Home = () => {
                                         <div class="p-3" style={{ maxWidth: 900 }}>
                                             <h4 class="text-white text-uppercase mb-md-3">Rent A Car</h4>
                                             <h1 class="display-1 text-white mb-md-4">Best Rental Cars In Your Location</h1>
-                                            <a href="/allcars" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
+                                            <a href="/allvehicles" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
                                         </div>
                                     </div>
                                 </div>
