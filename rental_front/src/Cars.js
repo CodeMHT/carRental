@@ -93,7 +93,7 @@ const Cars = () => {
                         <DropdownItem onClick={() => GetModel("A")}>All</DropdownItem>
                         <Dropdown.Item onClick={() => GetModel("X")}>SUV</Dropdown.Item>
                         <Dropdown.Item onClick={() => GetModel("M")}>M Performance</Dropdown.Item>
-                        <Dropdown.Item onClick={() => GetModel("S")}>Sedan</Dropdown.Item>
+                        <Dropdown.Item onClick={() => GetModel("S")}>Series</Dropdown.Item>
                         <Dropdown.Item onClick={() => GetModel("E")}>Electric</Dropdown.Item>
                         <DropdownItem onClick={() => GetModel("C")}>Classics</DropdownItem>
                     </DropdownButton>
