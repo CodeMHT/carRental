@@ -32,9 +32,9 @@ const Login = () => {
                     <div class="row">
                         <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                             <div className="d-inline-flex align-items-center">
-                                <a className="text-body pr-3" ><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</a>
+                                <p className="text-body pr-3" ><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</p>
                                 <span className="text-body">|</span>
-                                <a className="text-body px-3" ><i className="mr-2"><FontAwesomeIcon icon="fa fa-envelope" /></i>gwalamhlaba@icloud.com</a>
+                                <p className="text-body px-3" ><i className="mr-2"><FontAwesomeIcon icon="fa fa-envelope" /></i>gwalamhlaba@icloud.com</p>
                             </div>
                         </div>
                     </div>
@@ -42,9 +42,9 @@ const Login = () => {
                 <div class="container-fluid position-relative nav-bar p-0">
                     <div class="position-relative px-lg-5" style={{ zIndex: 9 }}>
                         <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
-                            <a class="navbar-brand">
+                            <p class="navbar-brand">
                                 <h1 class="text-uppercase text-primary mb-1">XDrive Rentals</h1>
-                            </a>
+                            </p>
                             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
@@ -81,6 +81,31 @@ const Login = () => {
                     </div>
                 </form>
             </div>
+
+            {/**Footer Start */}
+            <div className="container-fluid bg-secondary py-5 px-sm-3 px-md-5" style={{ marginTop: 50, height: 350 }}>
+                <div className="row pt-5 d-flex justify-content-center" style={{ marginTop: -60 }}>
+                    <div className="col-lg-3 col-md-6 mb-5 ">
+                        <h4 className="text-uppercase text-light mb-4 text-center">Get In Touch</h4>
+                        <p className="mb-2 text-white text-center"><i className="text-white mr-3"></i>Gauteng</p>
+                        <p className="mb-2 text-white text-center"><i className=" text-white mr-3"></i>084 279 3374</p>
+                        <p className="mb-2 text-white text-center"><i className="text-white mr-3"></i>gwalamhlaba@icloud.com</p>
+                        <h4 className="text-uppercase text-white py-2 text-center">My other platforms</h4>
+                        <div className="d-flex justify-content-center">
+                            <a className="btn btn-lg btn-dark btn-lg-square mr-2" href="https://www.linkedin.com/in/mhlabunzima-gwala-a56b30274/"><FontAwesomeIcon icon="fab fa-linkedin-in" /></a>
+                            <a className="btn btn-lg btn-dark btn-lg-square mr-2" href="https://www.instagram.com/chillycheesecalii/"><FontAwesomeIcon icon="fab fa-instagram" /></a>
+                            <a className="btn btn-lg btn-dark btn-lg-square mr-2" href="https://github.com/CodeMHT/"><FontAwesomeIcon icon="fab fa-github" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="container-fluid bg-dark py-4 px-sm-3 px-md-5">
+                <p className="mb-2 text-center text-body">&copy; <a href="/" >XDrive Rentals</a>. All Rights Reserved.</p>
+
+                {/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/}
+                <p className="m-0 text-center text-body">CSS Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
+            </div>
+            {/* Footer End */}
         </>
     )
 }

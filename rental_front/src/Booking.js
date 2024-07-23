@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Booking = () => {
 
-    const params = useParams()
     const redirect = useNavigate()
     const [car, setCar] = useState([])
     const [message, setMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
+
     const location = useLocation()
 
     const [details, setDetails] = useState({
         rented_PickUp: 0,
         rented_Return: 0,
-        vehicle_ID: params.id,
+        vehicle_ID: location.state,
         renter_Email: "",
         renter_Mobile: 0,
         renter_Name: "",
@@ -25,13 +26,19 @@ const Booking = () => {
     useEffect(() => {
 
         var id = location.state;
+
         axios.get(`https://carrental-service-l4ls.onrender.com/vehicle/car/${id}`)
             .then(res => setCar(res.data))
-    },)
+
+    }, [location.state])
 
 
     //Sending information to api
-    const BookVehicle = () => {
+    const BookVehicle = (event) => {
+        event.preventDefault()
+
+
+
         //Used to get the days
         var pickup = new Date(details.rented_PickUp)
         var dropoff = new Date(details.rented_Return)
@@ -40,15 +47,20 @@ const Booking = () => {
         var days = (dropoff.getTime() - pickup.getTime()) / (1000 * 60 * 60 * 24)
         details.rented_Cost = days * car[0].vehicle_cost
 
+        console.log(details)
+
         if (details.renter_ID.length === 13 && details.renter_Mobile.length === 10) {
 
             axios.post("https://carrental-service-l4ls.onrender.com/rental", details)
                 .then(res => {
                     if (res.data === "Success") {
-                        alert("Success. You'll receive an email with details of your order")
-                        redirect("/cars")
+                        setMessage("Success. You'll receive an email with details of your order, Redirect in 3 seconds")
+                        setInterval(() => {
+                            redirect("/allcars")
+                        }, [3000])
+
                     } else {
-                        setMessage("Error Making the booking. Please reload the page and try again ")
+                        setErrorMessage("Error Making the booking. Please reload the page and try again ")
                     }
                 })
 
@@ -56,9 +68,7 @@ const Booking = () => {
             setMessage("ID and/or Mobile is incorrect")
         }
 
-        if (message.length < 1) {
-            redirect("/cars")
-        }
+
 
     }
 
@@ -147,7 +157,7 @@ const Booking = () => {
             {/**Car Booking Start*/}
             <div className="container-fluid pb-5">
                 <div className="container">
-                    <form className="row">
+                    <form className="row" onSubmit={BookVehicle}>
                         <div className="col-lg-8">
                             <h2 className="mb-4">Personal Details</h2>
 
@@ -191,89 +201,41 @@ const Booking = () => {
                         <div className="col-lg-4">
                             <div className="bg-secondary p-5 mb-5">
                                 <h2 className="text-primary mb-4">Payment</h2>
-                                <div className="form-group">
-                                    <div className="custom-control custom-radio">
-                                        <input type="radio" className="custom-control-input" name="payment" id="paypal" />
-                                        <label className="custom-control-label" for="paypal">Paypal</label>
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <div className="custom-control custom-radio">
-                                        <input type="radio" className="custom-control-input" name="payment" id="directcheck" />
-                                        <label className="custom-control-label" for="directcheck">Direct Check</label>
-                                    </div>
-                                </div>
-                                <div className="form-group mb-4">
-                                    <div className="custom-control custom-radio">
-                                        <input type="radio" className="custom-control-input" name="payment" id="banktransfer" />
-                                        <label className="custom-control-label" for="banktransfer">Bank Transfer</label>
-                                    </div>
-                                </div>
-                                <button className="btn btn-block btn-primary py-3" onClick={(() => BookVehicle())}>Book Car</button>
+                                <p className="text-white"><strong>NOTE:</strong>  payment feature will be disabled as in uses sensitive information. Once booking is made it is assumed payment is automatic to align with scenario</p>
+
+                                <button className="btn btn-block btn-primary py-3">Book Car</button>
 
                             </div>
                         </div>
                     </form>
-                    {message && message}
+                    <p style={{ color: "green" }}>{message && message}</p>
+                    <p style={{ color: "red" }}>{errorMessage && errorMessage}</p>
                 </div>
             </div>
             {/**Car Booking End*/}
 
             {/**Footer Start */}
-            <div class="container-fluid bg-secondary py-5 px-sm-3 px-md-5" style={{ marginTop: 90 }}>
-                <div class="row pt-5">
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt text-white mr-3"></i>Gauteng</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt text-white mr-3"></i>084 279 3374</p>
-                        <p><i class="fa fa-envelope text-white mr-3"></i>gwalamhlaba@icloud.com</p>
-                        <h6 class="text-uppercase text-white py-2">My other platforms</h6>
-                        <div class="d-flex justify-content-start">
-                            <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="https://www.linkedin.com/in/mhlabunzima-gwala-a56b30274/"><FontAwesomeIcon icon="fab fa-linkedin-in" /></a>
-                            <a class="btn btn-lg btn-dark btn-lg-square" href="https://www.instagram.com/chillycheesecalii/"><FontAwesomeIcon icon="fab fa-instagram" /></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Useful Links</h4>
-                        <div class="d-flex flex-column justify-content-start">
-                            <p class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>Private Policy</p>
-                            <p class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>Term & Conditions</p>
-                            <p class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>New Member Registration</p>
-                            <p class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>Affiliate Programme</p>
-                            <p class="text-body mb-2" ><i class="fa fa-angle-right text-white mr-2"></i>Return & Refund</p>
-                            <p class="text-body" ><i class="fa fa-angle-right text-white mr-2"></i>Help & FQAs</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Car Gallery</h4>
-                        <div class="row mx-n1">
-                            <div class="col-4 px-1 mb-2">
-                                <img class="w-100" src="https://img-ik.cars.co.za/news-site-za/images/2023/04/BMW-M2-2023-28.jpg?tr=w-1200,h-800" alt="" />
-                            </div>
-                            <div class="col-4 px-1 mb-2">
-                                <img class="w-100" src="https://carsite.co.za/wp-content/uploads/2012/12/BMW-M6-Gran-Coupe-Rear1.jpg" alt="" />
-                            </div>
-                            <div class="col-4 px-1 mb-2">
-                                <img class="w-100" src="https://media.evo.co.uk/image/private/s--NV8ZTho0--/v1556218410/evo/2017/10/super-test_033.jpg" alt="" />
-                            </div>
-                            <div class="col-4 px-1 mb-2">
-                                <img class="w-100" src="https://www.bmw.co.za/content/dam/bmw/common/all-models/m-series/x5m/2023/highlights/bmw-m-series-x5-m-gallery-image-impressionen-02_1920.jpg.asset.1673025861930.jpg" alt="" />
-                            </div>
-                            <div class="col-4 px-1 mb-2">
-                                <img class="w-100" src="https://www.bmwusa.com/content/dam/bmw/common/vehicles/2023/my24/m-models/x6-m/overview/mobile/BMW-MY24-X6M-Overview-Form-01-Mobile.jpg" alt="" />
-                            </div>
-                            <div class="col-4 px-1 mb-2">
-                                <img class="w-100" src="https://www.carmag.co.za/wp-content/uploads/2023/12/BMW-Z4-prototype-front-three-quarter-copy-jpg.webp" alt="" />
-                            </div>
+            <div className="container-fluid bg-secondary py-5 px-sm-3 px-md-5" style={{ marginTop: 50, height: 350 }}>
+                <div className="row pt-5 d-flex justify-content-center" style={{ marginTop: -60 }}>
+                    <div className="col-lg-3 col-md-6 mb-5 ">
+                        <h4 className="text-uppercase text-light mb-4 text-center">Get In Touch</h4>
+                        <p className="mb-2 text-white text-center"><i className="text-white mr-3"></i>Gauteng</p>
+                        <p className="mb-2 text-white text-center"><i className=" text-white mr-3"></i>084 279 3374</p>
+                        <p className="mb-2 text-white text-center"><i className="text-white mr-3"></i>gwalamhlaba@icloud.com</p>
+                        <h4 className="text-uppercase text-white py-2 text-center">My other platforms</h4>
+                        <div className="d-flex justify-content-center">
+                            <a className="btn btn-lg btn-dark btn-lg-square mr-2" href="https://www.linkedin.com/in/mhlabunzima-gwala-a56b30274/"><FontAwesomeIcon icon="fab fa-linkedin-in" /></a>
+                            <a className="btn btn-lg btn-dark btn-lg-square mr-2" href="https://www.instagram.com/chillycheesecalii/"><FontAwesomeIcon icon="fab fa-instagram" /></a>
+                            <a className="btn btn-lg btn-dark btn-lg-square mr-2" href="https://github.com/CodeMHT/"><FontAwesomeIcon icon="fab fa-github" /></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container-fluid bg-dark py-4 px-sm-3 px-md-5">
-                <p class="mb-2 text-center text-body">&copy; <a href="/">XDrive Rentals</a>. All Rights Reserved.</p>
+            <div className="container-fluid bg-dark py-4 px-sm-3 px-md-5">
+                <p className="mb-2 text-center text-body">&copy; <a href="/" >XDrive Rentals</a>. All Rights Reserved.</p>
 
                 {/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/}
-                <p class="m-0 text-center text-body">CSS Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
+                <p className="m-0 text-center text-body">CSS Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
             </div>
             {/* Footer End */}
         </>
