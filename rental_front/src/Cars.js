@@ -42,13 +42,13 @@ const Cars = () => {
         <>
 
             {/**Topbar Start */}
-            <div className="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
-                <div className="row">
-                    <div className="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
+            <div class="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
+                <div class="row">
+                    <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                         <div className="d-inline-flex align-items-center">
-                            <p className="text-body pr-3" ><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</p>
-                            <span className="text-body">|</span>
-                            <p className="text-body px-3" ><i className="mr-2"><FontAwesomeIcon icon="fa fa-envelope" /></i>gwalamhlaba@icloud.com</p>
+                            <p className="text-body pr-3"><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</p>
+                            <span className="text-body">     </span>
+                            <p className="text-body px-3"><i className="mr-2"><FontAwesomeIcon icon="fa fa-envelope" /></i>gwalamhlaba@icloud.com</p>
                         </div>
                     </div>
 
