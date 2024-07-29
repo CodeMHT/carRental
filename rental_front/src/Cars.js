@@ -87,7 +87,7 @@ const Cars = () => {
                     <h6 className="text-uppercase m-0"><a className="text-white" href="/">Home</a></h6>
                     <h6 className="text-body m-0 px-3">/</h6>
                     <h6 className="text-uppercase text-body m-0">Car Listing</h6>
-                    <p><strong>NOTE:</strong>API might take up to 60 seconds to retrieve information upon initial load</p>
+
                 </div>
             </div>
             {/**Header End */}
@@ -97,6 +97,7 @@ const Cars = () => {
             <div className="container-fluid py-5">
                 <div className="container pt-5 pb-3">
                     <h1 className="display-4 text-uppercase text-center mb-5">Find Your Car</h1>
+                    <p><strong>NOTE:</strong>API might take up to 60 seconds to retrieve information upon initial load</p>
                     <DropdownButton id="dropdown-basic-button" title="Model" style={{ paddingBottom: 10 }}>
                         <DropdownItem onClick={() => GetModel("A")}>All</DropdownItem>
                         <Dropdown.Item onClick={() => GetModel("X")}>SUV</Dropdown.Item>
