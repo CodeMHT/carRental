@@ -11,13 +11,15 @@ const Login = () => {
 
     const Submit = (event) => {
         event.preventDefault()
-        axios.get(`https://carrental-service-l4ls.onrender.com/user/${user.email}/${user.password}`)
+
+        axios.post(`https://carrental-service-l4ls.onrender.com/user`, user)
             .then(res => {
-                console.log(res.data)
                 if (res.data === "Success") {
                     redirect("/dash")
+                } else if (res.data === "User Not Found") {
+                    setMessage("Incorrect Password or Email")
                 } else {
-                    setMessage("Incorrect Email or Password")
+                    setMessage("Something Went Wrong")
                 }
             })
 
@@ -28,9 +30,9 @@ const Login = () => {
         <>
             <div>
                 {/**Topbar Start */}
-                <div class="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div className="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
+                    <div className="row">
+                        <div className="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                             <div className="d-inline-flex align-items-center">
                                 <p className="text-body pr-3" ><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</p>
                                 <span className="text-body">|</span>
@@ -39,17 +41,17 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid position-relative nav-bar p-0">
-                    <div class="position-relative px-lg-5" style={{ zIndex: 9 }}>
-                        <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
-                            <p class="navbar-brand">
-                                <h1 class="text-uppercase text-primary mb-1">XDrive Rentals</h1>
+                <div className="container-fluid position-relative nav-bar p-0">
+                    <div className="position-relative px-lg-5" style={{ zIndex: 9 }}>
+                        <nav className="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
+                            <p className="navbar-brand">
+                                <h1 className="text-uppercase text-primary mb-1">XDrive Rentals</h1>
                             </p>
-                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                                <span class="navbar-toggler-icon"></span>
+                            <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                                <span className="navbar-toggler-icon"></span>
                             </button>
-                            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                                <div class="navbar-nav ml-auto py-0">
+                            <div className="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                                <div className="navbar-nav ml-auto py-0">
                                     <a href="/" class="nav-item nav-link active">Home</a>
                                     <a href="/allvehicles" class="nav-item nav-link" >Cars</a>
                                     <a href="/contact" class="nav-item nav-link">Contact</a>
@@ -62,9 +64,9 @@ const Login = () => {
             </div>
             <div className="login">
                 <form onSubmit={Submit}>
-                    <div class="container-fluid py-5">
+                    <div className="container-fluid py-5">
                         <h1 style={{ textAlign: "center" }}>Login</h1>
-                        <div class="container pt-5 pb-3">
+                        <div className="container pt-5 pb-3">
                             <div className="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" className="form-control p-4" placeholder="Your Email" required="required" onChange={e => setUser({ ...user, email: e.target.value })} />
