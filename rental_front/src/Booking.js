@@ -133,7 +133,7 @@ const Booking = () => {
                             <h1 className="display-4 text-uppercase mb-5">{car.vehicle_name}</h1>
                             <div className="row align-items-center pb-2">
                                 <div className="col-lg-6 mb-4">
-                                    <img className="img-fluid" src={"https://carrental-service-l4ls.onrender.com/" + car.vehicle_image} alt={car.vehicle_name} />
+                                    <img className="img-fluid" src={`https://carrental-service-l4ls.onrender.com/vehicle/image/${car.vehicle_id}`} alt={car.vehicle_name} />
                                 </div>
                                 <div className="col-lg-6 mb-4">
                                     <h4 className="mb-2">R{car.vehicle_cost}/Day</h4>
