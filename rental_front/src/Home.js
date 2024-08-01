@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import emailjs from '@emailjs/browser';
 
@@ -7,11 +7,17 @@ import emailjs from '@emailjs/browser';
 
 const Home = () => {
 
+
+    useEffect(() => {
+        alert("Give content up to 60 seconds to load as the api is hosted on a free hosting platform")
+    }, [])
+
     const [email, setEmail] = useState({
         name: " ",
         mail: " ",
         message: ""
     })
+
 
     const TempEmail = {
         from_name: email.name,
@@ -39,6 +45,7 @@ const Home = () => {
 
     return (
         <>
+
             <body>
                 <div>
                     {/**Topbar Start */}
