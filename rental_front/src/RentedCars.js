@@ -108,7 +108,7 @@ const RentedCars = () => {
 
                                 return <div className="col-lg-4 col-md-6 mb-2" key={index}>
                                     <div className="rent-item mb-4">
-                                        <img className="img-fluid mb-4" src={"https://carrental-service-l4ls.onrender.com/" + booked.vehicle_image} alt={booked.vehicle_name} />
+                                        <img className="img-fluid mb-4" src={`https://carrental-service-l4ls.onrender.com/vehicle/image/${booked.vehicle_id}`} alt={booked.vehicle_name} />
                                         <h4 className="text-uppercase mb-4">{booked.vehicle_name}</h4>
                                         <div className="d-flex justify-content-center mb-4">
                                             <div className="px-2">

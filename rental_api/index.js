@@ -16,6 +16,7 @@ const PORT = 5100;
 
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('./images')) //in order for frontend to view the images
 
 const corsOptions = {
@@ -32,7 +33,7 @@ client.connect((err, result) => {
     }
 })
 
-app.use(cors(corsOptions)) // Use this after the variable declaration
+app.use(cors(corsOptions))
 
 
 //Default Route 
@@ -47,6 +48,7 @@ app.use("/vehicle", vehicleRoute)
 app.use("/rental", rentRoute)
 app.use("/finance", financialRoute)
 app.use("/reports", reportRoute)
+
 
 //Starting the server
 app.listen(PORT, () => console.log(`Server: http://localhost:${PORT}`));

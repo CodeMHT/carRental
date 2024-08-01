@@ -8,7 +8,7 @@ const route = express.Router();
 
 
 //storage for images
-const siteimages = multer.diskStorage({
+/**const siteimages = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './images')
     },
@@ -21,9 +21,16 @@ const siteimages = multer.diskStorage({
 const save = multer({
     storage: siteimages
 })
+*/
+
+const siteimages = multer.memoryStorage()
+const save = multer({ siteimages })
 
 //Add new car
 route.post('/', save.single('car_Image'), async (req, res) => {
+
+    const { originalname, buffer } = req.file
+
 
     var cost = 0;
 
@@ -40,9 +47,9 @@ route.post('/', save.single('car_Image'), async (req, res) => {
     }
 
 
-    var car = [req.body.car_Name, req.body.car_Date, req.body.car_Info, "In Lot", req.file.filename, req.body.car_Type, req.body.car_Trans, cost];
+    var car = [req.body.car_Name, req.body.car_Date, req.body.car_Info, "In Lot", originalname, req.body.car_Type, req.body.car_Trans, cost, buffer];
 
-    client.query("INSERT INTO vehicles (vehicle_Name, vehicle_Date, vehicle_Info, vehicle_Availability, vehicle_Image, vehicle_Type, vehicle_Trans, vehicle_Cost) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", car, (err, result) => {
+    client.query("INSERT INTO vehicles (vehicle_Name, vehicle_Date, vehicle_Info, vehicle_Availability, vehicle_Image, vehicle_Type, vehicle_Trans, vehicle_Cost,image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8,$9)", car, (err, result) => {
         if (err) {
             console.log(err)
             res.send("Failure")
@@ -163,6 +170,23 @@ route.get("/available/car", (req, res) => {
 
     })
 
+})
+
+//Route to get Images for each car
+route.get("/image/:id", (req, res) => {
+    const id = req.params.id
+    client.query('Select image from vehicles where vehicle_id =$1', [id], (err, result) => {
+        if (err) {
+            res.send("Error: " + err)
+        } else if (result.rows.length > 0 && result.rows[0].image !== null) {
+            var image = result.rows[0].image
+            var imageBuff = Buffer.from(image, 'binary')
+            res.send(imageBuff)
+
+        } else {
+            res.send("Image Not Found")
+        }
+    })
 })
 
 export default route
