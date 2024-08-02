@@ -47,20 +47,24 @@ const Booking = () => {
         var days = (dropoff.getTime() - pickup.getTime()) / (1000 * 60 * 60 * 24)
         details.rented_Cost = days * car[0].vehicle_cost
 
-        console.log(details)
+        let response = ""
 
         if (details.renter_ID.length === 13 && details.renter_Mobile.length === 10) {
 
             axios.post("https://carrental-service-l4ls.onrender.com/rental", details)
                 .then(res => {
-                    if (res.data === "Success") {
+                    response = res.data
+                    if (response === "Success") {
                         setMessage("Success. You'll receive an email with details of your order, Redirect in 3 seconds")
-                        setInterval(() => {
-                            redirect("/allvehicles")
-                        }, [3000])
+                        response = ""
+                        setTimeout(() => {
+                            redirect('/allvehicles');
+
+                        }, 3000)
 
                     } else {
                         setErrorMessage("Error Making the booking. Please reload the page and try again ")
+                        response = ""
                     }
                 })
 
@@ -182,13 +186,15 @@ const Booking = () => {
                                 <div className="row">
                                     <div className="col-6 form-group">
                                         <div className="date" id="date2" data-target-input="nearest">
-                                            <input type="date" className="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
+                                            <label htmlFor="previous">Collection Date:</label>
+                                            <input type="date" id="previous" className="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
                                                 data-target="#date2" data-toggle="datetimepicker" onChange={e => setDetails({ ...details, rented_PickUp: e.target.value })} />
                                         </div>
                                     </div>
                                     <div className="col-6 form-group">
                                         <div className="time" id="time2" data-target-input="nearest">
-                                            <input type="date" className="form-control p-4 datetimepicker-input" placeholder="Pickup Time"
+                                            <label htmlFor="next">Return Date:</label>
+                                            <input type="date" id="next" className="form-control p-4 datetimepicker-input" placeholder="Pickup Time"
                                                 data-target="#time2" data-toggle="datetimepicker" onChange={e => setDetails({ ...details, rented_Return: e.target.value })} />
                                         </div>
                                     </div>

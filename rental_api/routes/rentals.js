@@ -49,7 +49,7 @@ route.get("/", (req, res) => {
     var prevarray = []
     var newarray = []
     var currentdate = new Date()
-    client.query("select vehicles.vehicle_id,vehicle_name,vehicle_date,vehicle_info,vehicle_availability,vehicle_image,vehicle_type,vehicle_trans,vehicle_cost from vehicles INNER JOIN rentedvehicles ON vehicles.vehicle_ID=rentedvehicles.vehicle_ID", (err, result) => {
+    client.query("select vehicles.vehicle_id,vehicle_name,vehicle_date,vehicle_info,vehicle_availability,vehicle_image,vehicle_type,vehicle_trans,vehicle_cost,rented_return,rented_pickup,renter_name,renter_mobile from vehicles INNER JOIN rentedvehicles ON vehicles.vehicle_ID=rentedvehicles.vehicle_ID ", (err, result) => {
         if (err) {
             res.send("Failure")
         } else {
@@ -61,11 +61,12 @@ route.get("/", (req, res) => {
                 var vehicleDate = new Date(prevarray[i].rented_return)
 
                 if (currentdate < vehicleDate) {
+
                     prevarray[i].rented_return = vehicleDate.toDateString()
+
                     newarray.push(prevarray[i])
                 }
             }
-
             res.send(newarray)
 
         }

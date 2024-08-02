@@ -40,7 +40,7 @@ const Dashboard = () => {
 
     var GetRental = (array) => {  //used to get top Rented vehicles using the id obtained 
 
-        axios.post("https://carrental-service-l4ls.onrender.com/finance/top/vehicles", array)
+        axios.post("http://localhost:5100/finance/top/vehicles", array)
             .then(res => setTopRentals(res.data))
     }
 

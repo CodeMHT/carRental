@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Contact = () => {
 
+    const [response, setResponse] = useState("")
+    const [error, setError] = useState("")
+
     const [email, setEmail] = useState({
         name: " ",
         mail: " ",
@@ -28,11 +31,13 @@ const Contact = () => {
             .send('service_c49ah4q', 'template_2h74a5v', TempEmail, 'VunDcHdYxVzCgZmBy')
             .then(
                 () => {
-                    console.log('SUCCESS!');
+
                     setEmail({})
+                    setResponse("Email Sent, We will be in touch soon :)")
                 },
                 (error) => {
-                    console.log('FAILED...', error.text);
+                    setError("Email Failed to send")
+
                 },
             );
     }
@@ -114,7 +119,9 @@ const Contact = () => {
                                         <button className="btn btn-primary py-3 px-5" type="submit">Send Message</button>
                                     </div>
                                 </form>
-
+                                <br />
+                                <p style={{ color: "green" }}><strong>{response && response}</strong></p>
+                                <p style={{ color: "red" }}><strong>{error && error}</strong></p>
                             </div>
                         </div>
                         <div className="col-lg-5 mb-2">
