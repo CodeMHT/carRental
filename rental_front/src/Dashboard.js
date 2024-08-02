@@ -45,7 +45,7 @@ const Dashboard = () => {
     }
 
     return (
-        <body>
+        <>
             <Modal show={open} onHide={Close} scrollable style={{ maxHeight: 650 }}>
                 <Modal.Header closeButton>
                     <Modal.Title>Customer Names</Modal.Title>
@@ -66,51 +66,51 @@ const Dashboard = () => {
             </Modal>
 
             {/*} <!-- ======= Header ======= -->*/}
-            <header id="header" class="header fixed-top d-flex align-items-center">
+            <header id="header" className="header fixed-top d-flex align-items-center">
 
-                <div class="d-flex align-items-center justify-content-between">
-                    <p class="logo d-flex align-items-center">
+                <div className="d-flex align-items-center justify-content-between">
+                    <p className="logo d-flex align-items-center">
                         <img src="assets/img/logo.png" alt="" />
-                        <a href="/dash"><span class="d-none d-lg-block">XDrive Rentals</span></a>
+                        <a href="/dash"><span className="d-none d-lg-block">XDrive Rentals</span></a>
                     </p>
-                    <i class="bi bi-list toggle-sidebar-btn"></i>
+                    <i className="bi bi-list toggle-sidebar-btn"></i>
                 </div>{/*<!-- End Logo -->*/}
 
 
-                <nav class="header-nav ms-auto">
+                <nav className="header-nav ms-auto">
 
                 </nav>{/*<!-- End Icons Navigation -->*/}
 
             </header>
 
             {/*} <!-- ======= Sidebar ======= -->*/}
-            <aside id="sidebar" class="sidebar">
+            <aside id="sidebar" className="sidebar">
 
-                <ul class="sidebar-nav" id="sidebar-nav">
+                <ul className="sidebar-nav" id="sidebar-nav">
 
-                    <li class="nav-item">
-                        <a class="nav-link " href="/dash">
-                            <i class="bi bi-grid"></i>
+                    <li className="nav-item">
+                        <a className="nav-link " href="/dash">
+                            <i className="bi bi-grid"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>{/*<!-- End Dashboard Nav -->*/}
 
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="/addvehicle">
-                            <i class="bi bi-menu-button-wide"></i><span>Add Vehicle</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <li className="nav-item">
+                        <a className="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="/addvehicle">
+                            <i className="bi bi-menu-button-wide"></i><span>Add Vehicle</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                     </li>{/*<!-- End Add Vehicle Nav -->*/}
 
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/vehicles">
-                            <i class="bi bi-journal-text"></i><span>Vehicles</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <li className="nav-item">
+                        <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/vehicles">
+                            <i className="bi bi-journal-text"></i><span>Vehicles</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
 
                     </li>{/*<!-- End Vehicles Nav -->*/}
 
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="/rented">
-                            <i class="bi bi-layout-text-window-reverse"></i><span>Booked Vehicles</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <li className="nav-item">
+                        <a className="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="/rented">
+                            <i className="bi bi-layout-text-window-reverse"></i><span>Booked Vehicles</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                     </li>{/*<!-- End Booked Vheicles Nav -->*/}
 
@@ -120,58 +120,45 @@ const Dashboard = () => {
                         </a>
                     </li>{/*<!-- End Report Nav -->*/}
 
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="/">
-                            <i class="bi bi-gem"></i><span>Log Out</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <li className="nav-item">
+                        <a className="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="/">
+                            <i className="bi bi-gem"></i><span>Log Out</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                     </li>{/*<!-- End Log Out Nav -->*/}
 
                 </ul>
             </aside>{/*<!-- End Sidebar-->*/}
 
-            <main id="main" class="main">
+            <main id="main" className="main">
 
-                <div class="pagetitle">
+                <div className="pagetitle">
                     <h1>Dashboard</h1>
                     <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </nav>
                 </div>{/*<!-- End Page Title -->*/}
 
-                <section class="section dashboard">
-                    <div class="row">
+                <section className="section dashboard">
+                    <div className="row">
 
                         {/*<!-- Left side columns -->*/}
-                        <div class="col-lg-8">
-                            <div class="row">
+                        <div className="col-lg-8">
+                            <div className="row">
 
                                 {/*<!-- Sales Card -->*/}
-                                <div class="col-xxl-4 col-md-6">
-                                    <div class="card info-card sales-card">
+                                <div className="col-xxl-4 col-md-6">
+                                    <div className="card info-card sales-card">
 
-                                        <div class="filter">
-                                            <a class="icon" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Rentals <span>| This month</span></h5>
 
-                                                <li><a class="dropdown-item">Today</a></li>
-                                                <li><a class="dropdown-item" >This Month</a></li>
-                                                <li><a class="dropdown-item" >This Year</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Rentals <span>| This month</span></h5>
-
-                                            <div class="d-flex align-items-center">
-                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-cart"></i>
+                                            <div className="d-flex align-items-center">
+                                                <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i className="bi bi-cart"></i>
                                                 </div>
-                                                <div class="ps-3">
+                                                <div className="ps-3">
                                                     <h6> {month}</h6>
                                                 </div>
                                             </div>
@@ -181,33 +168,18 @@ const Dashboard = () => {
                                 </div>{/*<!-- End Sales Card -->*/}
 
                                 {/*<!-- Revenue Card -->*/}
-                                <div class="col-xxl-4 col-md-6">
-                                    <div class="card info-card revenue-card">
+                                <div className="col-xxl-4 col-md-6">
+                                    <div className="card info-card revenue-card">
 
-                                        <div class="filter">
-                                            <a class="icon" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Revenue <span>| This Month</span></h5>
 
-                                                <li><a class="dropdown-item" >Today</a></li>
-                                                <li><a class="dropdown-item" >This Month</a></li>
-                                                <li><a class="dropdown-item" >This Year</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Revenue <span>| This Month</span></h5>
-
-                                            <div class="d-flex align-items-center">
-                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-currency-dollar"></i>
+                                            <div className="d-flex align-items-center">
+                                                <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i className="bi bi-currency-dollar"></i>
                                                 </div>
-                                                <div class="ps-3">
+                                                <div className="ps-3">
                                                     <h6>R{revenue}</h6>
-                                                    <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1">increase</span>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -216,18 +188,18 @@ const Dashboard = () => {
                                 </div>{/*<!-- End Revenue Card -->*/}
 
                                 {/*<!-- Customers Card -->*/}
-                                <div class="col-xxl-4 col-xl-12">
+                                <div className="col-xxl-4 col-xl-12">
 
-                                    <div class="card info-card customers-card">
+                                    <div className="card info-card customers-card">
 
-                                        <div class="card-body">
-                                            <h5 class="card-title">Customers <span>| This Year</span></h5>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Customers <span>| This Year</span></h5>
 
-                                            <div class="d-flex align-items-center">
-                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
+                                            <div className="d-flex align-items-center">
+                                                <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i className="bi bi-people"></i>
                                                 </div>
-                                                <div class="ps-3">
+                                                <div className="ps-3">
                                                     <h6>{customers.length}</h6>
                                                     <button onClick={Open} style={{ border: 0, fontSize: 15, color: "blue" }}>View Names</button>
 
@@ -239,47 +211,16 @@ const Dashboard = () => {
 
                                 </div>{/*<!-- End Customers Card -->*/}
 
-                                {/*<!-- Reports -->*/}
-                                <div class="col-12">
-                                    <div class="card">
-
-                                        <div class="filter">
-                                            <a class="icon" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-
-                                                <li><a class="dropdown-item" >Today</a></li>
-                                                <li><a class="dropdown-item" >This Month</a></li>
-                                                <li><a class="dropdown-item" >This Year</a></li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>{/*<!-- End Reports -->*/}
-
                                 {/*<!-- Recent Sales -->*/}
-                                <div class="col-12">
-                                    <div class="card recent-sales overflow-auto">
+                                <div className="col-12">
+                                    <div className="card recent-sales overflow-auto">
 
-                                        <div class="filter">
-                                            <a class="icon" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
 
-                                                <li><a class="dropdown-item" >Today</a></li>
-                                                <li><a class="dropdown-item" >This Month</a></li>
-                                                <li><a class="dropdown-item" >This Year</a></li>
-                                            </ul>
-                                        </div>
 
-                                        <div class="card-body">
-                                            <h5 class="card-title">Recent Rentals <span>| Today</span></h5>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Recent Rentals <span>| Today</span></h5>
 
-                                            <table class="table table-borderless datatable">
+                                            <table className="table table-borderless datatable">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">#</th>
@@ -295,9 +236,9 @@ const Dashboard = () => {
                                                         return (<tr key={index}>
                                                             <th scope="row">{rental.rented_id}</th>
                                                             <td>{rental.renter_name}</td>
-                                                            <td class="text-primary">{rental.vehicle_name}</td>
+                                                            <td className="text-primary">{rental.vehicle_name}</td>
                                                             <td>{rental.vehicle_date}</td>
-                                                            <td><span class="row">{rental.renter_mobile}</span></td>
+                                                            <td><span className="row">{rental.renter_mobile}</span></td>
                                                         </tr>
                                                         )
                                                     })}
@@ -311,26 +252,26 @@ const Dashboard = () => {
                                 </div>{/*<!-- End Recent Sales -->*/}
 
                                 {/*<!-- Top Selling -->*/}
-                                <div class="col-12">
-                                    <div class="card top-selling overflow-auto">
+                                <div className="col-12">
+                                    <div className="card top-selling overflow-auto">
 
-                                        <div class="filter">
-                                            <a class="icon" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
+                                        <div className="filter">
+                                            <p className="icon" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></p>
+                                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <li className="dropdown-header text-start">
                                                     <h6>Filter</h6>
                                                 </li>
 
-                                                <li><a class="dropdown-item" >Today</a></li>
-                                                <li><a class="dropdown-item" >This Month</a></li>
-                                                <li><a class="dropdown-item" >This Year</a></li>
+                                                <li><p className="dropdown-item" >Today</p></li>
+                                                <li><p className="dropdown-item" >This Month</p></li>
+                                                <li><p className="dropdown-item" >This Year</p></li>
                                             </ul>
                                         </div>
 
-                                        <div class="card-body pb-0">
-                                            <h5 class="card-title">Top rented</h5>
+                                        <div className="card-body pb-0">
+                                            <h5 className="card-title">Top rented</h5>
 
-                                            <table class="table table-borderless">
+                                            <table className="table table-borderless">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Preview</th>
@@ -347,7 +288,7 @@ const Dashboard = () => {
                                                                     <th scope="row" ><img src={`https://carrental-service-l4ls.onrender.com/vehicle/image/${car.vehicle_id}`} alt={car.vehicle_name} /></th>
                                                                     <td style={{ color: "blue" }}>{car.vehicle_name}</td>
                                                                     <td>R{car.vehicle_cost}</td>
-                                                                    <td class="fw-bold">{car.vehicle_date}</td>
+                                                                    <td className="fw-bold">{car.vehicle_date}</td>
                                                                 </React.Fragment>
                                                             ))}
                                                         </tr>
@@ -370,11 +311,11 @@ const Dashboard = () => {
             {/**End #main */}
 
             {/**Footer*/}
-            <footer id="footer" class="footer">
-                <div class="copyright">
+            <footer id="footer" className="footer">
+                <div className="copyright">
                     &copy; Copyright <strong><span>XDrive Rentals</span></strong>. All Rights Reserved
                 </div>
-                <div class="credits">
+                <div className="credits">
                     {/**<!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
@@ -383,7 +324,7 @@ const Dashboard = () => {
                 </div>
             </footer>
             {/**End Footer*/}
-        </body>
+        </>
     )
 }
 

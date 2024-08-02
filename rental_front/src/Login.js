@@ -44,18 +44,16 @@ const Login = () => {
                 <div className="container-fluid position-relative nav-bar p-0">
                     <div className="position-relative px-lg-5" style={{ zIndex: 9 }}>
                         <nav className="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
-                            <p className="navbar-brand">
-                                <h1 className="text-uppercase text-primary mb-1">XDrive Rentals</h1>
-                            </p>
+                            <h1 className="navbar-brand text-uppercase text-primary mb-1">XDrive Rentals</h1>
                             <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                                 <div className="navbar-nav ml-auto py-0">
-                                    <a href="/" class="nav-item nav-link active">Home</a>
-                                    <a href="/allvehicles" class="nav-item nav-link" >Cars</a>
-                                    <a href="/contact" class="nav-item nav-link">Contact</a>
-                                    <a href="/login" class='nav-link '>Login</a>
+                                    <a href="/" className="nav-item nav-link active">Home</a>
+                                    <a href="/allvehicles" className="nav-item nav-link" >Cars</a>
+                                    <a href="/contact" className="nav-item nav-link">Contact</a>
+                                    <a href="/login" className='nav-link '>Login</a>
                                 </div>
                             </div>
                         </nav>
@@ -63,17 +61,17 @@ const Login = () => {
                 </div>
             </div>
             <div className="login">
-                <form onSubmit={Submit}>
+                <form id="loginform" onSubmit={Submit}>
                     <div className="container-fluid py-5">
                         <h1 style={{ textAlign: "center" }}>Login</h1>
                         <div className="container pt-5 pb-3">
                             <div className="form-group">
-                                <label for="email">Email</label>
+                                <label htmlFor="email">Email</label>
                                 <input type="email" id="email" className="form-control p-4" placeholder="Your Email" required="required" onChange={e => setUser({ ...user, email: e.target.value })} />
                             </div>
                         </div>
                         <div className=" form-group">
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <input type="password" id="password" className="form-control p-4" required="required" onChange={e => setUser({ ...user, password: e.target.value })} />
                         </div>
                         <div>

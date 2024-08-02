@@ -58,7 +58,7 @@ route.post("/top/vehicles", (req, res) => {
     // Function to query the database for a single vehicle
     const getVehicle = (vehicleID) => {
         return new Promise((resolve, reject) => {
-            client.query("SELECT * FROM vehicles WHERE vehicle_ID = " + vehicleID, (err, result) => {
+            client.query("select vehicle_id,vehicle_name,vehicle_date,vehicle_info,vehicle_availability,vehicle_image,vehicle_type,vehicle_trans,vehicle_cost from vehicles WHERE vehicle_ID = $1", vehicleID, (err, result) => {
                 if (err) {
                     reject("Couldn't get vehicle");
                 } else {

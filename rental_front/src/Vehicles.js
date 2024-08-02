@@ -36,9 +36,9 @@ const Vehicles = () => {
             <aside id="sidebar" className="sidebar">
 
                 <ul className="sidebar-nav" id="sidebar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link " href="/dash">
-                            <i class="bi bi-grid"></i>
+                    <li className="nav-item">
+                        <a className="nav-link " href="/dash">
+                            <i className="bi bi-grid"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>{/*<!-- End Dashboard Nav -->*/}

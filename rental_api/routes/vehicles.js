@@ -8,20 +8,6 @@ const route = express.Router();
 
 
 //storage for images
-/**const siteimages = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './images')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname))
-
-    }
-})
-
-const save = multer({
-    storage: siteimages
-})
-*/
 
 const siteimages = multer.memoryStorage()
 const save = multer({ siteimages })
@@ -66,8 +52,8 @@ route.get('/:model', (req, res) => {
     var arrVehicles = []   //Array to store all vehicles that we have
     var arrFinal = []   //Array to be sent to the frontend
 
-
-    client.query(`SELECT * FROM vehicles where vehicle_Type ='` + req.params.model + `'`, (err, result) => {
+    const model = req.params.model
+    client.query(`select vehicle_id,vehicle_name,vehicle_date,vehicle_info,vehicle_availability,vehicle_image,vehicle_type,vehicle_trans,vehicle_cost from vehicles where vehicle_type =$1`, [model], (err, result) => {
         if (err) {
             res.send("Failure Getting Model")
         } else {
@@ -106,7 +92,8 @@ route.get('/:model', (req, res) => {
 //Get specific car
 route.get('/car/:id', async (req, res) => {
 
-    client.query("Select * from vehicles where vehicle_ID = " + req.params.id, (err, result) => {
+    const id = req.params.id
+    client.query("select vehicle_id,vehicle_name,vehicle_date,vehicle_info,vehicle_availability,vehicle_image,vehicle_type,vehicle_trans,vehicle_cost from vehicles where vehicle_id = $1", [id], (err, result) => {
         if (err) {
             res.send("Failure")
         } else {
@@ -119,7 +106,7 @@ route.get('/car/:id', async (req, res) => {
 
 //get all vehicles
 route.get("/", (req, res) => {
-    client.query("SELECT * FROM vehicles", (err, result) => {
+    client.query("select vehicle_id,vehicle_name,vehicle_date,vehicle_info,vehicle_availability,vehicle_image,vehicle_type,vehicle_trans,vehicle_cost from vehicles", (err, result) => {
         if (err) {
             res.status(500).send("Loading Failure");
         } else {
@@ -137,7 +124,7 @@ route.get("/available/car", (req, res) => {
     var arrFinal = []   //Array to be sent to the frontend
 
 
-    client.query("SELECT * FROM vehicles ", (err, result) => {
+    client.query("select vehicle_id,vehicle_name,vehicle_date,vehicle_info,vehicle_availability,vehicle_image,vehicle_type,vehicle_trans,vehicle_cost from vehicles ", (err, result) => {
         if (err) {
             res.send("Failure")
         } else {

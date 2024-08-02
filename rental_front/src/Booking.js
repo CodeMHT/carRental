@@ -76,9 +76,9 @@ const Booking = () => {
     return (
         <>
             {/**Topbar Start */}
-            <div class="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
-                <div class="row">
-                    <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
+            <div className="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
+                <div className="row">
+                    <div className="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                         <div className="d-inline-flex align-items-center">
                             <p className="text-body pr-3"><i className="mr-2"><FontAwesomeIcon icon="fa fa-phone-alt" /></i>0842793374</p>
                             <span className="text-body">     </span>
@@ -95,9 +95,7 @@ const Booking = () => {
             <div className="container-fluid position-relative nav-bar p-0">
                 <div className="position-relative px-lg-5" style={{ zIndex: 9 }}>
                     <nav className="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
-                        <p className="navbar-brand">
-                            <h1 className="text-uppercase text-primary mb-1">XDrive Rentals</h1>
-                        </p>
+                        <h1 className="navbar-brand text-uppercase text-primary mb-1">XDrive Rentals</h1>
                         <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -156,7 +154,7 @@ const Booking = () => {
             {/**Car Booking Start*/}
             <div className="container-fluid pb-5">
                 <div className="container">
-                    <form className="row" onSubmit={BookVehicle}>
+                    <form name="bookingform" className="row" onSubmit={BookVehicle}>
                         <div className="col-lg-8">
                             <h2 className="mb-4">Personal Details</h2>
 

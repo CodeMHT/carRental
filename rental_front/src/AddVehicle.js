@@ -62,9 +62,9 @@ const AddVehicle = () => {
             <aside id="sidebar" className="sidebar">
 
                 <ul className="sidebar-nav" id="sidebar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link " href="/dash">
-                            <i class="bi bi-grid"></i>
+                    <li className="nav-item">
+                        <a className="nav-link " href="/dash">
+                            <i className="bi bi-grid"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>{/*<!-- End Dashboard Nav -->*/}
@@ -115,7 +115,7 @@ const AddVehicle = () => {
                     </nav>
                 </div>{/*<!-- End Page Title -->*/}
 
-                <form className="row g-3">
+                <form name="vehicle" className="row g-3">
                     <div className="col-md-6">
                         <div className="form-floating">
                             <label htmlFor="model">Car Model</label>
@@ -153,13 +153,15 @@ const AddVehicle = () => {
                         <input className="form-check-input" name="cartype" type="radio" id="series" value="S" onChange={e => setCar({ ...car, car_Type: e.target.value })} />
                         <label htmlFor="series" style={{ paddingRight: 25 }}>Series Package</label>
                         <input className="form-check-input" name="cartype" type="radio" id="M" value="M" onChange={e => setCar({ ...car, car_Type: e.target.value })} />
-                        <label htmlFor="M Package" style={{ paddingRight: 25 }}>M Package</label>
+                        <label htmlFor="M" style={{ paddingRight: 25 }}>M Package</label>
                         <input className="form-check-input" name="cartype" type="radio" id="X" value="X" onChange={e => setCar({ ...car, car_Type: e.target.value })} />
                         <label htmlFor="X" style={{ paddingRight: 25 }}>X Package</label>
-                        <input className="form-check-input" name="cartype" type="radio" id="electric" value="E" onChange={e => setCar({ ...car, car_Type: e.target.value })} />
+                        <input className="form-check-input" name="cartype" type="radio" id="E" value="E" onChange={e => setCar({ ...car, car_Type: e.target.value })} />
                         <label htmlFor="E" style={{ paddingRight: 25 }}>Electric Package</label>
-                        <input className="form-check-input" name="cartype" type="radio" id="electric" value="C" onChange={e => setCar({ ...car, car_Type: e.target.value })} />
-                        <label htmlFor="C" >Classics</label>
+                        <input className="form-check-input" name="cartype" type="radio" id="C" value="C" onChange={e => setCar({ ...car, car_Type: e.target.value })} />
+                        <label htmlFor="C" style={{ paddingRight: 25 }}>Classics</label>
+                        <input className="form-check-input" name="cartype" type="radio" id="A" value="A" onChange={e => setCar({ ...car, car_Type: e.target.value })} />
+                        <label htmlFor="A" >Cabriolet</label>
                     </div>
 
                     <div className="text-center" style={{ paddingTop: 20, paddingLeft: 12.5 }}>
