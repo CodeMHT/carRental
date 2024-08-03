@@ -70,7 +70,9 @@ const Reports = () => {
             borderColor: [
                 'rgb(82, 78, 183)',
             ],
-            borderWidth: 1
+            borderWidth: 1,
+            barPercentage: 0.6,
+            categoryPercentage: 1.0
         }]
     };
 
@@ -170,7 +172,7 @@ const Reports = () => {
                 <section className="section" >
                     <div className="row">
                         <div className="col-lg-6">
-                            <div className="card">
+                            <div >
                                 <h5 className="card-title">Months Top Sellers <span><DropdownButton bsPrefix="btn btn-light rounded-pill" title="Month" style={{ paddingBottom: 10 }}>
                                     <Dropdown.Item onClick={() => GetMonthAndDate(1)}>January</Dropdown.Item>
                                     <Dropdown.Item onClick={() => GetMonthAndDate(2)}>February</Dropdown.Item>
@@ -188,7 +190,7 @@ const Reports = () => {
                                 <div className="card-body" style={{ width: 1000 }}>
                                     <div>
                                         {/**Bar Chart*/}
-                                        <Bar data={tempdata} height={300} options={options} width={30} />
+                                        <Bar data={tempdata} height={300} options={options} width={10} />
                                     </div>
                                     <p style={{ color: "red" }}><strong>{error && error}</strong></p>
                                 </div>
