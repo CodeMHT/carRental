@@ -6,14 +6,13 @@ Contains web app and api for a car rental service
 
 For admin side of site
 email: gwala@gmail.com
-password: XDrive2024rentals
+password: gw@la246
 
 
 ## Vehicles
 
-Vehicles shown on client side are not all the vehicles.
-These are the vehicles that are available for rental.
-Vehicles that are currently rented out will not be shown
+Vehicles shown on client side are all the vehicles but not all of them are available to book
+as some would be rented out
 
 ## Payment
 
